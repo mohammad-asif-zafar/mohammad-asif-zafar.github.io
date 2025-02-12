@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Mohammad Asif Portfolio</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/aos.css">
+
+	<link rel="stylesheet" href="css/ionicons.min.css">
+
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/style.css">
+
+
+
+	<style>
+		/*======================================
+//--//-->   ABOUT
+======================================*/
+
+		.about-mf .box-shadow-full {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
+
+		.about-mf .about-img {
+			margin-bottom: 2rem;
+		}
+
+		.about-mf .about-img img {
+			margin-left: 10px;
+		}
+
+
+		.skill-mf .progress {
+			/* background-color: #cde1f8; */
+			margin: .5rem 0 1.2rem 0;
+			border-radius: 0;
+			height: .7rem;
+		}
+
+		.skill-mf .progress .progress-bar {
+			height: .7rem;
+			background-color: #ffbd39;
+		}
+
+
+		/* Animation styles */
+		#typing-animation {
+			position: relative;
+			font-size: 30px;
+			font-weight: bold;
+			color: rgb(255, 255, 255);
+			overflow: hidden;
+			white-space: nowrap;
+			animation: typing 3s steps(20, end) infinite;
+		}
+
+		#typing-animation:before {
+			content: "";
+			/* position: absolute; */
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 100%;
+			background-color: #ccc;
+			animation: typing-cursor 0.5s ease-in-out infinite;
+		}
+
+		@keyframes typing {
+			from {
+				width: 0;
+			}
+
+			to {
+				width: 100%;
+			}
+		}
+
+		@keyframes typing-cursor {
+			from {
+				width: 5px;
+			}
+
+			to {
+				width: 0;
+			}
+		}
+
+
+		/* project image zoom effect */
+
+		.zoom-effect {
+			overflow: hidden;
+			transition: transform 0.3s ease-out;
+		}
+
+		.zoom-effect:hover {
+			transform: scale(1.1);
+		}
+	</style>
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Pankaj Jangid</a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+					<li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
+					<li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section id="home-section" class="hero">
+		<div class="home-slider  owl-carousel">
+			<div class="slider-item ">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end"
+						data-scrollax-parent="true">
+						<div class="one-third js-fullheight order-md-last img"
+							style="background-image:url(images/bg_1.png);">
+							<div class="overlay"></div>
+						</div>
+						<div class="one-forth d-flex  align-items-center ftco-animate"
+							data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text">
+								<span class="subheading">Hello!</span>
+								<h1 class="mb-4 mt-3">I'm <span>Pankaj Jangid</span></h1>
+
+								<!-- Element to contain animated typing -->
+								<span id="typing-animation"></span>
+
+								<script>
+
+									// Initialize the typing animation
+									const typingAnimationElement = document.getElementById('typing-animation');
+
+									// Create an array of typing text
+									const typingTexts = [
+										'Engineer  ',
+										'Innovator  ',
+										'Mentor   ',
+									];
+
+									// Create a function to display the typing animation for a given text
+									function playTypingAnimation(text) {
+										// Loop through each character and add it to the element
+										for (let i = 0; i < text.length; i++) {
+											setTimeout(() => {
+												typingAnimationElement.textContent += text[i];
+											}, i * 200); // Increase the delay to slow down the typing animation
+										}
+
+										// Once the animation is complete, reset the text and start over
+										setTimeout(() => {
+											typingAnimationElement.textContent = '';
+											playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
+										}, text.length * 200);
+									}
+
+									// Start the typing animation loop
+									playTypingAnimation(typingTexts[0]);
+
+								</script>
+
+								<br>
+								<br>
+								<h2>A Senior Android Developer</h2>
+								<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
+								<!-- <br> -->
+								<p><a href="https://pankajjangid.com"
+										class="btn btn-primary py-3 px-4">Website</a>
+									<a href="https://github.com/pankajjangid"
+										class="btn btn-white btn-outline-white py-3 px-4">My works</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+		<div class="container">
+			<div class="row">
+				<div class="row d-flex align-items-stretch">
+					<!-- <div class="row d-flex"> -->
+					<div class="col-md-6 col-lg-5 d-flex">
+						<div class="img-about img d-flex align-items-stretch">
+							<div class="overlay">
+								<div class="row">
+									<div class="col-sm-6 col-md-5">
+										<div class="about-img">
+											<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+										</div>
+									</div>
+									<!-- Details next to profile image -->
+									<div class="col-sm-6 col-md-7">
+										<div class="about-info">
+											<p><span class="title-s">Name: </span> <span>Pankaj Jangid</span></p>
+											<p><span class="title-s">Job Role: </span> <span>Senior Android
+													Developer</span></p>
+											<p><span class="title-s">Experience: </span> <span>9 Years</span></p>
+											<p><span class="title-s">Address: </span> <span>Kuala Lumpur Malaysia</span>
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="skill-mf">
+									<p class="title-s">Skills</p>
+									<span>Kotlin</span> <span class="pull-right">95%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 95%;"
+											aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<span>Java</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%"
+											aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<span>Android Studio</span> <span class="pull-right">90%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 90%"
+											aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<span>Jetpack Compose</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%"
+											aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<span>Flutter</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 80%"
+											aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+
+								<h1 class="big">About</h1>
+								<h2 class="mb-4">About Me</h2>
+
+								<p>Senior Android Developer with 9+ years of experience, I specialize in creating
+									efficient, scalable, and user-friendly mobile applications. Skilled in Kotlin, Java,
+									and Clean Architecture, I thrive on tackling complex challenges and delivering
+									innovative solutions. Currently coding from Kuala Lumpur, Malaysia.</p>
+								<ul class="about-info mt-4 px-md-0 px-2">
+									<li class="d-flex"><span>Profile:</span> <span>Senior Android Developer</span></li>
+									<li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, Digital Banking ,
+											Social media</span></li>
+									<li class="d-flex"><span>Education:</span> <span>Masters of Computer Applications
+											(M.C.A)</span></li>
+									<li class="d-flex"><span>Language:</span> <span>English, Hindi</span></li>
+									<li class="d-flex"><span>Other Skills:</span> <span>AWS, Bitbucket, SVN, Git, JIRA,
+											Confluences, Firebase</span></li>
+									<li class="d-flex"><span>Interest:</span> <span>Traveling, Travel Photography,
+											Teaching</span></li>
+
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="counter-wrap ftco-animate d-flex mt-md-3">
+							<div class="text">
+								<p class="mb-4">
+									<span class="number" data-number="30">0</span> <span>+</span>
+									<span>&nbsp; Projects completed</span>
+								</p>
+								<p><a href="https://www.linkedin.com/in/pankajjangid/"
+										class="btn btn-primary py-3 px-3">LinkedIn</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<section class="ftco-section ftco-no-pb" id="resume-section">
+		<div class="container">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-10 heading-section text-center ftco-animate">
+					<h1 class="big big-2">Resume</h1>
+					<h2 class="mb-4">Resume</h2>
+					<p>Seasoned Senior Android Developer with 9+ years of experience delivering high-performance mobile applications. Proven expertise in Kotlin, Java, Clean Architecture, and cross-functional collaboration. Currently enhancing the TMRW Thailand Android app for UOB Bank with innovative, user-focused solutions.</p>
+				</div>
+			</div>
+			<div class="row justify-content-center mt-5">
+				<div class="col-md-6 text-center ftco-animate">
+					<p><a href="https://docs.google.com/uc?export=download&id=1GvuQo24FkOp96GxTFCEJZsxOKS1bUA2g" class="btn btn-primary py-4 px-5">Download CV</a></p>
+				</div>
+			</div>
+			<br>
+			<br>
+			
+			<div class="row">
+				<h1 class="big-4">Experience</h1>
+				<div class="underline"></div>
+			</div>
+			<br>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">Dec 2023 - Present</span>
+						<h2>Senior Android Developer</h2>
+						<span class="position">Accion Labs</span>
+						<p class="mt-4">Accion Labs is an IT services company headquartered in Pittsburgh, our core
+							purpose is to impact lives by transforming businesses through innovation. With a presence in
+							22 global offices, Accion Labs boasts an engineering headcount of more than 5,000 employees.
+						<ul>
+							<li>Lead the development and enhancement of the OFM Module within the TMRW Thailand Android
+								application, ensuring high performance and user satisfaction.</li>
+							<li>Design and integrate new features that align with UOB Bank’s digital banking goals,
+								improving customer experience and engagement.</li>
+							<li>Ensure that the Android app meets all security and compliance standards specific to the
+								banking sector, safeguarding user data and transactions.</li>
+							<li>Continuously monitor and optimize the app's performance, leveraging analytics to make
+								data-driven decisions that enhance user experience and operational efficiency.</li>
+							<li>Participated in code reviews and worked closely with cross-functional teams to ensure
+								code quality and adherence to best practices.</li>
+
+						</ul>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">Oct 2021 - Dec 2023</span>
+						<h2>Senior Software Engineer</h2>
+						<span class="position">Dew Solutions Pvt Ltd</span>
+						<p class="mt-4">Dew Solutions is a premier provider of strategic IT services designed
+							specifically for large-enterprise and mid-tier organizations as well as startups. We are one
+							of the highest rated mobile app developers in India, USA & Canada.
+						<ul>
+							<li>Developed new features for Decathlon India Home Page and Search Screen.</li>
+							<li>Revamped the UI & Functionality of the Search screen, resulting in 30% more user
+								interactions.</li>
+							<li>Worked on AMI Module enabling other sellers to sell their products on the Decathlon
+								India platform.</li>
+							<li>Led the complete lifecycle of Android app development, from concept to deployment,
+								ensuring high performance and scalability.</li>
+							<li> Provided mentorship to junior developers and conducted thorough code reviews to
+								maintain code quality and best practices across the team.</li>
+
+						</ul>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">Jun 2020 - Oct 2021</span>
+						<h2>Android Application Developer</h2>
+						<span class="position">CMS Computers Limited (INDIA)</span>
+						<p class="mt-4">CMS Computers Limited is aligned with the Government’s mission of Digital India,
+							Smart Cities, Smart Grids, playing a major role in cultivating the use of information
+							technology.
+						<ul>
+							<li>Integrated new features and optimized existing functionalities within the Android apps
+								to enhance user experience and performance.</li>
+							<li>Collaborated with clients and stakeholders to gather and analyze project requirements,
+								ensuring alignment with business goals.</li>
+							<li>Designed, developed, and maintained Android applications that met client requirements
+								and industry standards.</li>
+							<li>Identified, diagnosed, and resolved issues within the app, ensuring smooth functionality
+								and minimizing downtime.</li>
+							<li>Participated in code reviews and worked closely with cross-functional teams to ensure
+								code quality and adherence to best practices.</li>
+
+						</ul>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">May 2018 - May 2020</span>
+						<h2>Android Developer</h2>
+						<span class="position">Octal Info Solution Limited</span>
+						<p class="mt-4">Octal Info Solution is amongst the top-running IT companies offering superlative
+							web and mobile development solutions to help the clients attain their objectives.
+						<ul>
+							<li>Contributed to the full mobile application development lifecycle from planning,
+								requirement gathering, development, testing, and launching on the Google play store for
+								beta testing.</li>
+							<li>Communicated with clients from different countries (US, UK, UAE, Singapore). </li>
+							<li>Responsible for developing all application components and UI resources.</li>
+							<li>Built compliant and scalable Android applications.</li>
+							<li>Collaborated with the UI team to design appropriate icons and displays for screens.</li>
+
+						</ul>
+						</p>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">Mar 2016 - Apr 2018</span>
+						<h2>Android Developer</h2>
+						<span class="position">RAD Techno Solutions Pvt. Ltd.</span>
+						<p class="mt-4">RAD Techno Services provides solutions in almost all fields of Information
+							Technology having strong foundations in web development, eCommerce applications, web content
+							management solutions and ERP Solutions. We have applied our broad experience and expertise
+							in successfully deploying lots of applications for clients worldwide.
+						<ul>
+							<li>Participate in a complete Software Development Life Cycle (SDLC) for proper analysis,
+								development, testing, deployment, and code enhancement.</li>
+							<li>Responsible for the development of all application components and UI resources</li>
+							<li>Designed and executed A/B tests, performed rigorous statistical analysis. Led to 20% MoM
+								increase in the conversion rate.</li>
+						</ul>
+						</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">Sep 2015 - Feb 2016</span>
+						<h2>Android Trainee</h2>
+						<span class="position">SAG InfoTech Pvt. Ltd.</span>
+						<p class="mt-4">SAG Infotech Private Limited is a software development company which provides
+							the tax filing software solution for chartered accountant, company secretary, and other
+							professionals.
+						<ul>
+							<li>Gained a solid foundation in Android SDK and core development concepts, including
+								Activities, Intents, and Fragments.</li>
+							<li>Developed hands-on experience with UI/UX design principles, implementing layouts, and
+								integrating basic animations.</li>
+							<li>Learned to work with RESTful APIs for data fetching and local data storage using SQLite
+								and SharedPreferences.</li>
+						</ul>
+						</p>
+					</div>
+
+				</div>
+			</div>
+
+			<br>
+			<br>
+
+			<div class="row">
+				<h1 class="big-4">Education</h1>
+				<div class="underline"></div>
+			</div>
+			<br>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">2011-2014</span>
+						<h2>Master of Computer Application</h2>
+						<span class="position">Rajasthan Technical University, Kota </span>
+						<p class="mt-4">Grade: First class.</p>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">2008-2011</span>
+						<h2>Bachelor of Computer Application</h2>
+						<span class="position">University of Rajasthan</span>
+						<p class="mt-4">Grade: First class.</p>
+					</div>
+				</div>
+			</div>
+
+
+			
+		</div>
+	</section>
+
+
+
+	<section class="ftco-section" id="project-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-5">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<h1 class="big big-2">Projects</h1>
+					<h2 class="mb-4">Projects</h2>
+					<p>Crafting Innovative Android Experiences with 9+ Years of Expertise.</p>
+				</div>
+			</div>
+			<div class="row d-flex">
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.uob.mightyth2&hl=en&gl=US"
+							class="block-20 zoom-effect" style="background-image: url('images/UOB_TMWR.png');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.uob.mightyth2&hl=en&gl=US">UOB
+									TMRW Thailand</a></h3>
+							<p>Meet UOB TMRW, the all-in-one app for all your financial needs. It’s banking made simple,
+								easy and personal for you:
+
+							</p>
+							<p> <b>Tools & technologies:</b> Android Studio, Kotlin, Room, Koin, Coroutines, Flow, MVVM,
+								Clean Architecture, Timber, Jetpack Libraries, Retrofit, Modules</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.evamall.evacustomer&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/decathlon_app.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.evamall.evacustomer&hl=en_IN">Decathlon
+									Online Shopping App</a></h3>
+							<p>Now enjoy and experience the entire offering of Decathlon India’s 70+ sports and over
+								5,000 products by using the Decathlon mobile application!</p>
+							<p> <b>Tools & technologies:</b> Android Studio, Kotlin, Room, Dagger 2.0, RxJava /
+								RxAndroid, RxRelay, Timber, Jetpack Libraries, Retrofit, MVP, Dyantrace, Contentful </p>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry">
+						<a href="https://play.google.com/store/apps/details?id=com.brilliance.digiluxRedux.configurator"
+							class="block-20 zoom-effect" style="background-image: url('images/digilux.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.brilliance.digiluxRedux.configurator">Digilux
+									AI</a></h3>
+							<p>Integral features include: Scene controls IR controls for airconditioners, television &
+								other multimedia devices. User-defined graphic interface Integration with home security
+								products.
+							</p>
+							<p> <b>Tools & technologies:</b> Android Studio,Kotlin,Room,openid AppAuth,NeumorphismView
+								,RxJava,Retrofit,MVP</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- added justify-content-center to center align the last two projects -->
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.datainfosys.rajasthanpolice.official&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/rajcop_official.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.datainfosys.rajasthanpolice.official&hl=en_IN">RajCop
+									(Only For Rajasthan Police Officials)</a></h3>
+							<p>RajCop - Mobile application only to be used by authorized Rajasthan Police Officials.
+								Others may not install and try it out. Its use is subject to legal consequences.
+							</p>
+							<p> <b>Tools & technologies:</b> Android Studio,Java,Kotlin,RxJava /
+								RxAndroid,Retrofit,XML,MVP</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.datainfosys.rajasthanpolice.publicapp&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/rajcop_citizin.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.datainfosys.rajasthanpolice.publicapp&hl=en_IN">RajCop
+									Citizen
+								</a></h3>
+							<p>This application is for citizens only to access Lockdown Pass(Restrictions related to
+								Corona Virus spread, police control room and selected contacts, Complaint registration
+								and its status, View FIR- all FIR's except those which are restricted by law(Revealing
+								victims identity in case of sexual offences, etc.), Report Crime, Search Vehicle- Basic
+								details many more
+							</p>
+							<p> <b>Tools & technologies:</b> Android Studio,Kotlin,Room,openid AppAuth,NeumorphismView
+								,RxJava,Retrofit,MVP</p>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.iguruji.biolifescience&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/iguruji.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.iguruji.biolifescience&hl=en_IN">iGuruJi
+									-CSIR NET,GATE,IIT-JAM </a></h3>
+							<p>iGuruJi.in is an android Test Prep and video portal owned by AADHAR INSTITUTE , a part of
+								AADHAR INSTITUTE’s Distance Learning Program Division. Aadhar Institute is the India's
+								leading name in the field of Biotechnology and Life Science coaching, preparing students
+								for Various Exams since 2002.</p>
+							<p> <b>Tools & technologies:</b> Android Studio,Java,Kotlin,RxJava / RxAndroid,Exo
+								player,Retrofit,XML,MVC,Firebase</p>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.education.english_madhyam&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/englishmadhyam.png');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.education.english_madhyam&hl=en_IN">English
+									Madhyam</a></h3>
+							<p>English Madhyam is english learning application which has feature like Read Newspaper
+								Editorials,Learn Daily 5 New vocabulary Words,Attempt Daily Quiz & Get All India
+								Rank,Story based article for beginners.</p>
+							<p> <b>Tools &amp; technologies:</b> Android Studio,Flutter,Dart,Dio,Firebase,http,google
+								signin,razorpay,provider,lottie </p>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.octal.voila&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/voilla_sg.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.octal.voila&hl=en_IN">Voila
+									SG</a></h3>
+							<p>Orders will be picked up by our associated helpers whom we have screened and have they
+								have undergone a housekeeping course to ensure a minimum standard in providing the
+								service. Our objective is to provide an efficient housekeeping service to a satisfactory
+								standard. No more worries of per hour charges and overstay beyond the necessary timings.
+							</p>
+							<p> <b>Tools &amp; technologies:</b> Android Studio,Kotlin,RxJava / RxAndroid,Google
+								Maps,Retrofit,MVP,XML</p>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
+					<div class="blog-entry justify-content-end">
+						<a href="https://play.google.com/store/apps/details?id=com.voila.supervisor&hl=en_IN"
+							class="block-20 zoom-effect" style="background-image: url('images/voilla_helper.jpg');">
+						</a>
+						<div class="text mt-3 float-right d-block">
+
+							<h3 class="heading"><a
+									href="https://play.google.com/store/apps/details?id=com.voila.supervisor&hl=en_IN">Voila
+									Helper</a></h3>
+							<p>Our objective is to provide an efficient housekeeping service to a satisfactory standard.
+								Please Visit our website for more details: https://www.voilasg.com</p>
+							<p> <b>Tools &amp; technologies:</b> Android Studio,Kotlin,RxJava / RxAndroid,Google
+								Maps,Retrofit,MVP,XML,
+							</p>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+	</section>
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+		<div class="container">
+			<div class="row d-md-flex align-items-center">
+				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18">
+						<div class="text">
+							<strong class="number" data-number="5">0</strong>
+							<span>Achievements</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18">
+						<div class="text">
+							<strong class="number" data-number="25">0</strong>
+							<span>Projects</span>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18">
+						<div class="text">
+							<strong class="number" data-number="1000">0</strong>
+							<span>Mentored Students</span>
+						</div>
+					</div>
+				</div> -->
+				<!-- <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18">
+						<div class="text">
+							<strong class="number" data-number="500">0</strong>
+							<span>Cups of coffee</span>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+
+		<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
+			<!-- <div class="container"> -->
+			<div class="row justify-content-center">
+				<div class="col-md-7 ftco-animate text-center">
+					<h2>More projects on<span> Github </span> </h2>
+					<div class="heading">
+						<h4> Turning ideas into powerful mobile solutions with clean, scalable code.</h4>
+						<br>
+						<p><a href="https://github.com/pankajjangid" class="btn btn-primary py-3 px-5">GitHub</a></p>
+					</div>
+				</div>
+			</div>
+			<!-- </div> -->
+		</div>
+	</section>
+
+
+
+	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<h1 class="big big-2">Contact</h1>
+					<h2 class="mb-4">Contact Me</h2>
+					<p>Below are the details to reach out to me!</p>
+				</div>
+			</div>
+
+			<div class="row d-flex contact-info mb-5">
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-map-signs"></span>
+						</div>
+						<h3 class="mb-4">Address</h3>
+						<p>Kuala Lumpur , Malaysia</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-4">Contact Number</h3>
+						<p><a href="https://wa.link/xxcw70">+60 138449691 <br> +91 9784632484</a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-4">Email Address</h3>
+						<p><a href="mailto:info@yoursite.com">pankaj0619@gmail.com</a></p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-globe"></span>
+						</div>
+						<h3 class="mb-4">Visit Website</h3>
+						<p><a href="https://pankajjangid.com/">pankajjangid.com</a></p>
+					</div>
+				</div>
+
+				<div class="container">
+					<br>
+					<br>
+					<div class="row justify-content-center">
+						<div class="col-md-7 ftco-animate text-center">
+							<h2>Have a<span> Question? </span> <a href="https://forms.gle/cgMcKwVJa7oPyFqU7"
+									class="btn btn-primary py-3 px-5">Click Here</a> </h2>
+						</div>
+					</div>
+					<br>
+					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+						<li class="ftco-animate normal-txt">Find me on </li>
+						<li class="ftco-animate"><a href="https://www.linkedin.com/in/pankajjangid/"><span
+									class="icon-linkedin"></span></a></li>
+						<li class="ftco-animate"><a href="https://x.com/pankaj0619"><span
+									class="icon-twitter"></span></a></li>
+						<li class="ftco-animate"><a href="https://www.facebook.com/pankajjangid2/"><span
+									class="icon-facebook"></span></a></li>
+						<li class="ftco-animate"><a href="https://www.instagram.com/pankajjangid.fit/"><span
+									class="icon-instagram"></span></a></li>
+					</ul>
+					<br>
+				</div>
+			</div>
+	</section>
+
+
+
+
+
+
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" />
+		</svg></div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
