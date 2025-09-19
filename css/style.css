@@ -8541,7 +8541,7 @@ h1, h2, h3, h4, h5,
           z-index: 1; }
         .owl-carousel.home-slider .slider-item .slider-text h1 {
           font-size: 60px;
-          color: #fff;
+          color: #333333;
           line-height: 1.2;
           font-weight: 800; }
           .owl-carousel.home-slider .slider-item .slider-text h1 span {
@@ -8549,23 +8549,24 @@ h1, h2, h3, h4, h5,
             color: #FFCA28; }
           @media (max-width: 991.98px) {
             .owl-carousel.home-slider .slider-item .slider-text h1 {
-              color: #fff;
+              color: #333333;
               font-size: 50px; } }
           @media (max-width: 767.98px) {
             .owl-carousel.home-slider .slider-item .slider-text h1 {
               font-size: 40px; } }
         .owl-carousel.home-slider .slider-item .slider-text h2 {
           font-size: 30px;
-          font-weight: 400; }
+          font-weight: 400;
+          color: #333333; }
           @media (max-width: 991.98px) {
             .owl-carousel.home-slider .slider-item .slider-text h2 {
-              color: #fff; } }
+              color: #333333; } }
         .owl-carousel.home-slider .slider-item .slider-text p {
           color: rgba(0, 0, 0, 0.8);
           font-weight: 400; }
           @media (max-width: 991.98px) {
             .owl-carousel.home-slider .slider-item .slider-text p {
-              color: rgba(255, 255, 255, 0.7);
+              color: rgba(0, 0, 0, 0.8);
               font-size: 23px; } }
         .owl-carousel.home-slider .slider-item .slider-text .btn-custom {
           bordeR: 1px solid #FFCA28;
@@ -8797,14 +8798,14 @@ h1, h2, h3, h4, h5,
       width: calc(100% - 130px); }
       .ftco-about ul.about-info li span:first-child {
         font-weight: 600;
-        color: #fff;
+        color: #333333;
         width: 130px; }
 
 .ftco-about .counter-wrap .text p {
   font-size: 20px; }
   .ftco-about .counter-wrap .text p span {
     font-weight: 400;
-    color: #fff; }
+    color: #333333; }
   .ftco-about .counter-wrap .text p span.number {
     font-weight: 600;
     color: #FFCA28; }
@@ -8812,7 +8813,7 @@ h1, h2, h3, h4, h5,
 .resume-wrap {
   width: 100%;
   margin-bottom: 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   padding: 30px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -8833,7 +8834,7 @@ h1, h2, h3, h4, h5,
 .services-1 {
   margin-bottom: 40px;
   padding: 2em;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   width: 100%;
   -webkit-box-shadow: 0px 20px 69px -27px rgba(0, 0, 0, 0.17);
   -moz-box-shadow: 0px 20px 69px -27px rgba(0, 0, 0, 0.17);
@@ -8852,7 +8853,7 @@ h1, h2, h3, h4, h5,
     letter-spacing: 3px;
     text-transform: uppercase;
     position: relative;
-    color: #fff; }
+    color: #333333; }
     .services-1 .desc h3:after {
       position: absolute;
       bottom: -15px;
@@ -8864,7 +8865,7 @@ h1, h2, h3, h4, h5,
       background: #FFCA28;
       margin: 0 auto; }
     .services-1 .desc h3 a {
-      color: #fff; }
+      color: #333333; }
   .services-1 .desc h4 {
     font-size: 20px;
     font-weight: 300;
@@ -8896,7 +8897,7 @@ h1, h2, h3, h4, h5,
   height: 10px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background: #1a1a1a;
+  background: #e0e0e0;
   overflow: visible; }
 
 .progress-bar {
