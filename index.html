@@ -488,6 +488,25 @@
 								</div>
 								
 								<p class="lead mb-4">Senior Android Engineer with 8+ years of experience building and scaling Kotlin-based Android apps using Jetpack Compose, MVVM, and modular architectures. Skilled in Coroutines, Flow, and RxJava for reactive programming, with expertise in secure app development (SSL pinning, PCI DSS, fraud detection) and CI/CD pipelines. Proven track record delivering customer-facing apps to the Play Store in cross-functional Agile squads, with strong focus on product outcomes, clean code, and mentoring Android teams.</p>
+
+                                <!-- Audio Introduction -->
+                                <div class="bg-light p-4 rounded-3 mb-4">
+                                    <h5 class="mb-3 fw-bold d-flex align-items-center">
+                                        <i class="icon-mic text-primary me-2"></i>
+                                        Listen to My Introduction
+                                    </h5>
+                                    <div class="audio-player">
+                                        <audio id="introduction-audio" controls style="width: 100%; max-width: 400px;">
+                                            <source src="audio/introduction.m4a" type="audio/mp4">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                        <p class="small text-muted mt-2 mb-0">
+                                            <a href="audio/introduction.m4a" target="_blank" download class="text-primary">
+                                                <i class="icon-download"></i> Download audio
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
 								
 								<div class="achievements bg-light p-4 rounded-3 mb-4">
 									<h5 class="mb-3 fw-bold">Key Achievements</h5>
@@ -933,7 +952,72 @@
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 
-	<script src="js/main.js"></script>
+	<script>
+    // Audio Player Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('introduction-audio');
+        const playPauseBtn = document.querySelector('.play-pause-btn');
+        const playIcon = playPauseBtn.querySelector('i');
+        const progressBar = document.querySelector('.progress-bar');
+        const currentTimeEl = document.querySelector('.current-time');
+        const durationEl = document.querySelector('.duration');
+        const progressContainer = document.querySelector('.progress');
+
+        // Format time in seconds to MM:SS
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        // Update the progress bar and time
+        function updateProgress() {
+            const { currentTime, duration } = audio;
+            const progressPercent = (currentTime / duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            currentTimeEl.textContent = formatTime(currentTime);
+        }
+
+        // Set the duration when metadata is loaded
+        audio.addEventListener('loadedmetadata', function() {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+
+        // Update progress as audio plays
+        audio.addEventListener('timeupdate', updateProgress);
+
+        // Click on progress bar to seek
+        progressContainer.addEventListener('click', function(e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        });
+
+        // Play/Pause button click
+        playPauseBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.classList.remove('icon-play');
+                playIcon.classList.add('icon-pause');
+            } else {
+                audio.pause();
+                playIcon.classList.remove('icon-pause');
+                playIcon.classList.add('icon-play');
+            }
+        });
+
+        // Update button when audio ends
+        audio.addEventListener('ended', function() {
+            playIcon.classList.remove('icon-pause');
+            playIcon.classList.add('icon-play');
+            progressBar.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+        });
+    });
+</script>
+
+<script src="js/main.js"></script>
 
 </body>
 
