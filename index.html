@@ -22,391 +22,316 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
 
 	<style>
-        /* Global Styles */
+        /* Advanced Modern Design Theme */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(15, 23, 42, 0.9);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
         body {
+            background-color: var(--bg-dark) !important;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+            color: var(--text-main) !important;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            line-height: 1.7;
         }
-        
-        /* Section Spacing */
+
+        /* Force dark theme visibility */
+        .ftco-about, .ftco-section, .container, .row {
+            background: transparent !important;
+        }
+
+        .text-main, p, span:not(.icon), li {
+            color: var(--text-main) !important;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        /* Glassmorphism Sections */
         section {
-            padding: 5rem 0;
-            position: relative;
+            padding: 8rem 0;
+            background: transparent !important;
         }
-        
+
+        .col-lg-4, .col-lg-8, .col-lg-10 {
+            background: transparent !important;
+        }
+
+        .glass-card {
+            background: var(--bg-card) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
         /* Typography */
         h1.big, h1.big-2, h1.big-4 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-        
-        h2 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
             margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        /* Home Section */
-        .about-mf .box-shadow-full {
-            padding: 4rem 2rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-            border-radius: 0.5rem;
-            background: #fff;
-            margin-top: 2rem;
         }
 
-        .about-img {
-            position: relative;
-            margin-bottom: 2rem;
-            text-align: center;
+        h1, h2, h3, h4, h5, h6, p, span, li, a {
+            color: var(--text-main) !important;
         }
 
-        .about-img img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        }
-
-        /* Skills Section */
-        .skill-mf .progress {
-            margin: 1rem 0 1.5rem 0;
-            border-radius: 0.5rem;
-            height: 0.8rem;
-            background-color: #f1f1f1;
-            overflow: visible;
-        }
-
-        .skill-mf .progress .progress-bar {
-            height: 0.8rem;
-            background-color: #3f51b5;
-            border-radius: 0.5rem;
-            position: relative;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Typing Animation */
-        #typing-animation {
-            position: relative;
-            font-size: 2.5rem;
+        .text-primary, .text-primary * {
+            color: var(--primary-color) !important;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
-            color: #fff;
-            min-height: 4rem;
-            display: inline-block;
-            margin: 1rem 0;
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        .text-main { color: var(--text-main) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+
+        /* Navigation */
+        .ftco_navbar {
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1.2rem 0;
         }
 
-        @keyframes typing-cursor {
-            from, to { border-color: transparent; }
-            50% { border-color: #fff; }
+        .ftco_navbar .navbar-brand {
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Project Cards */
-        .blog-entry {
-            margin-bottom: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-            background: #fff;
-            border-radius: 0.75rem;
+        .ftco_navbar .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .ftco_navbar .nav-link:hover, .ftco_navbar .nav-link.active {
+            opacity: 1;
+            color: var(--primary-color) !important;
+            text-shadow: var(--shadow-glow);
+        }
+
+        /* Bento Grid Skills */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .bento-item {
+            padding: 2.5rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-glass);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
+            background: var(--bg-card);
+        }
+
+        .bento-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .bento-item:hover {
+            transform: scale(1.02) translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .bento-item * { position: relative; z-index: 1; }
+
+        /* Project Cards 2.0 */
+        .blog-entry {
+            background: var(--bg-card) !important;
+            border: 1px solid var(--border-glass);
+            border-radius: 2rem;
+            transition: var(--transition);
+            height: 100%;
         }
 
         .blog-entry:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-color);
         }
 
         .blog-entry .block-20 {
-            height: 200px;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: relative;
-            overflow: hidden;
+            height: 250px;
+            border-radius: 2rem 2rem 0 0;
+            filter: grayscale(20%);
+            transition: var(--transition);
         }
 
-        .blog-entry .block-20::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
-            opacity: 0.3;
-            transition: opacity 0.3s ease;
+        .blog-entry:hover .block-20 {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
-        .blog-entry:hover .block-20::after {
-            opacity: 0.5;
+        /* Modern Audio Player */
+        .audio-player {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid var(--border-glass);
+            border-radius: 2rem;
         }
 
-        .blog-entry .text {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .play-pause-btn {
+            background: var(--primary-gradient);
+            border: none;
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition);
         }
 
-        .blog-entry .text h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            color: #2d3748;
+        .play-pause-btn:hover {
+            transform: scale(1.1) rotate(15deg);
         }
 
-        .blog-entry .text p {
-            color: #4a5568;
-            margin-bottom: 1.25rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .badge {
-            font-weight: 500;
-            padding: 0.35em 0.65em;
-            font-size: 0.75em;
-            border-radius: 0.25rem;
-            margin-right: 0.4em;
-            margin-bottom: 0.5em;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .badge.bg-primary {
-            background-color: #3f51b5 !important;
-        }
-
-        .btn-outline-primary {
-            color: #3f51b5;
-            border-color: #3f51b5;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-            margin-top: auto;
-        }
-
-        .btn-outline-primary:hover {
-            background-color: #3f51b5;
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        /* Resume Section */
-        /* About Section Styles */
-        .contact-info i {
-            min-width: 24px;
-            text-align: center;
-        }
-        
-        .social-links a {
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-3px);
-            color: #303f9f !important;
-        }
-        
-        .achievements li {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .achievements i {
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-        }
-        
-        .title-border {
-            height: 3px;
-            width: 60px;
-            background: #3f51b5;
-            display: block;
-            margin-bottom: 1.5rem;
-        }
-        
-        .badge {
-            font-weight: 500;
-            padding: 0.5em 0.8em;
-            font-size: 0.85em;
-            border-radius: 6px;
-            margin-bottom: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-        
-        .badge i {
-            margin-right: 0.3rem;
-        }
-        
-        .bg-light {
-            background-color: #f8f9fa !important;
-        }
-        
-        /* Resume Section Styles */
+        /* Resume Experience */
         .resume-wrap {
-            height: 100%;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.03) !important;
+            border-radius: 2rem;
+            border: 1px solid var(--border-glass);
+            padding: 3rem;
+            transition: var(--transition);
         }
 
         .resume-wrap:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .resume-content {
-            padding-left: 1.5rem;
-            border-left: 2px solid #e9ecef;
-            margin-left: 1.8rem;
-        }
-
-        .icon-box {
-            transition: all 0.3s ease;
-        }
-
-        .resume-wrap:hover .icon-box {
-            background: #3f51b5 !important;
-        }
-
-        .resume-wrap:hover .icon-box i {
-            color: white !important;
-        }
-
-        .bullet-point {
-            color: #3f51b5;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-
-        .resume-wrap h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .resume-wrap .text-muted {
-            color: #6c757d !important;
-            font-size: 0.9rem;
-        }
-
-        .resume-wrap .position {
-            display: block;
-            color: #6c757d;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .resume-wrap:hover {
-            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-color: var(--primary-color);
         }
 
         .resume-wrap .date {
-            color: #3f51b5;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: inline-block;
         }
 
-        .resume-wrap h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .resume-wrap .position {
-            color: #6c757d;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 991.98px) {
-            h1.big, h1.big-2, h1.big-4 {
-                font-size: 2.5rem;
-            }
-            
-            section {
-                padding: 3rem 0;
-            }
-            
-            .about-mf .box-shadow-full {
-                padding: 2rem 1rem;
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            h1.big, h1.big-2, h1.big-4 {
-                font-size: 2rem;
-            }
-            
-            #typing-animation {
-                font-size: 1.8rem;
-                min-height: 3rem;
-            }
-            
-            .resume-wrap {
-                padding: 1.5rem;
-            }
-        }
-        
-        /* Project Section */
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
-        }
-        
-        .project-card .card-body {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .project-card .btn {
-            margin-top: auto;
-            align-self: flex-start;
-        }
-        
-        .project-card h3 {
-            color: #2c3e50;
+        /* Badges */
+        .badge-tech {
+            background: rgba(99, 102, 241, 0.1) !important;
+            color: var(--primary-color) !important;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 0.6rem 1.2rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            border-radius: 1rem;
+            transition: var(--transition);
         }
-        
-        .project-card .badge {
-            font-weight: 500;
-            padding: 0.5em 0.8em;
-            font-size: 0.8em;
-            border-radius: 4px;
-            background-color: #f8f9fa;
-            color: #495057;
-            border: 1px solid #e9ecef;
+
+        .badge-tech:hover {
+            background: var(--primary-color) !important;
+            color: white !important;
+            transform: translateY(-3px);
         }
-	</style>
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary-gradient) !important;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1.2rem 2.5rem;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-gradient); border-radius: 5px; }
+
+        /* Spacing and Alignment Fixes */
+        .contact-info .d-flex {
+            word-break: break-all;
+            align-items: flex-start !important;
+        }
+
+        .contact-info i {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            min-width: 25px; /* Ensures consistent alignment regardless of icon width */
+            text-align: center;
+        }
+
+        .achievements .d-flex {
+            align-items: flex-start !important;
+        }
+
+        .achievements i {
+            margin-top: 6px;
+            font-size: 0.8rem;
+            min-width: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tags .badge {
+            margin: 0 !important; /* Resetting legacy margins */
+        }
+
+        .section-title h2 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .title-border {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Sidebar */
+        @media (max-width: 991px) {
+            .profile-card {
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
 
 
 </head>
@@ -436,42 +361,42 @@
 
 
 
-	<section class="ftco-about img ftco-section ftco-no-pb" id="about-section" style="background: #ffffff; padding-top: 7rem;">
+	<section class="ftco-about ftco-section ftco-no-pb" id="about-section" style="padding-top: 7rem;">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
 					<div class="row g-4">
 						<!-- Profile Card -->
 						<div class="col-lg-4">
-							<div class="card border-0 h-100" style="background: #f8f9fa;">
+							<div class="profile-card glass-card h-100">
 								<div class="card-body p-4">
 									<div class="text-center mb-4">
-										<img src="images/about-me.png" class="rounded-circle shadow" alt="Mohammad Asif Zafar" style="width: 180px; height: 180px; object-fit: cover; border: 4px solid #3f51b5;">
+										<img src="images/about-me.png" class="rounded-circle shadow" alt="Mohammad Asif Zafar" style="width: 180px; height: 180px; object-fit: cover; border: 4px solid var(--primary-color);">
 									</div>
 									
 									<h2 class="h4 text-center mb-3 fw-bold">MOHAMMAD ASIF ZAFAR</h2>
-									<p class="text-center text-primary fw-medium mb-4">Senior Android Engineer | 8+ yrs Kotlin, Jetpack Compose, MVVM</p>
+									<p class="text-center text-primary fw-medium mb-4">Senior Android Engineer | KMP Expert | 9.5 yrs Kotlin, Jetpack Compose, FinTech</p>
 									
 									<div class="contact-info mb-4">
-										<div class="d-flex align-items-center mb-3">
-											<i class="icon-phone text-primary me-2" style="min-width: 20px; text-align: center;"></i>
-											<a href="tel:+60183764681" class="text-dark text-decoration-none">+60 18-376 4681</a>
+										<div class="d-flex mb-3">
+											<i class="fas fa-phone text-primary me-3 mt-1" style="width: 20px; text-align: center;"></i>
+											<a href="tel:+60183764681" class="text-main text-decoration-none">+60 18-376 4681</a>
 										</div>
-										<div class="d-flex align-items-center mb-3">
-											<i class="icon-envelope text-primary me-2" style="min-width: 20px; text-align: center;"></i>
-											<a href="mailto:asifzafar000@yahoo.com" class="text-dark text-decoration-none">asifzafar000@yahoo.com</a>
+										<div class="d-flex mb-3">
+											<i class="fas fa-envelope text-primary me-3 mt-1" style="width: 20px; text-align: center;"></i>
+											<a href="mailto:asifzafar000@yahoo.com" class="text-main text-decoration-none">asifzafar000@yahoo.com</a>
 										</div>
-										<div class="d-flex align-items-center mb-3">
-											<i class="fab fa-linkedin text-primary me-2" style="min-width: 20px; text-align: center;"></i>
-											<a href="https://linkedin.com/in/mohammad-asif-zafar-61b3198b/" target="_blank" class="text-dark text-decoration-none">linkedin.com/in/mohammad-asif-zafar-61b3198b/</a>
+										<div class="d-flex mb-3">
+											<i class="fab fa-linkedin text-primary me-3 mt-1" style="width: 20px; text-align: center;"></i>
+											<a href="https://linkedin.com/in/mohammad-asif-zafar-61b3198b/" target="_blank" class="text-main text-decoration-none">LinkedIn Profile</a>
 										</div>
-										<div class="d-flex align-items-center mb-3">
-											<i class="fas fa-map-marker-alt text-primary me-2" style="min-width: 20px; text-align: center;"></i>
-											<span>Kuala Lumpur, Malaysia</span>
+										<div class="d-flex mb-3">
+											<i class="fas fa-map-marker-alt text-primary me-3 mt-1" style="width: 20px; text-align: center;"></i>
+											<span class="text-main">Kuala Lumpur, Malaysia</span>
 										</div>
-										<div class="d-flex align-items-center">
-											<i class="icon-globe text-primary me-2" style="min-width: 20px; text-align: center;"></i>
-											<a href="https://mohammad-asif-zafar.github.io/" target="_blank" class="text-dark text-decoration-none">mohammad-asif-zafar.github.io</a>
+										<div class="d-flex">
+											<i class="fas fa-globe text-primary me-3 mt-1" style="width: 20px; text-align: center;"></i>
+											<a href="https://mohammad-asif-zafar.github.io/" target="_blank" class="text-main text-decoration-none">Portfolio Website</a>
 										</div>
 									</div>
 								
@@ -484,43 +409,69 @@
 							<div class="ps-lg-4">
 								<div class="section-title mb-4">
 									<h2 class="display-6 fw-bold mb-3 text-primary">Professional Summary</h2>
-									<div class="title-border bg-primary" style="width: 60px; height: 3px;"></div>
+									<div class="title-border" style="width: 60px; height: 3px; background: var(--primary-gradient);"></div>
 								</div>
 								
-								<p class="lead mb-4">Senior Android Engineer with 8+ years of experience building and scaling Kotlin-based Android apps using Jetpack Compose, MVVM, and modular architectures. Skilled in Coroutines, Flow, and RxJava for reactive programming, with expertise in secure app development (SSL pinning, PCI DSS, fraud detection) and CI/CD pipelines. Proven track record delivering customer-facing apps to the Play Store in cross-functional Agile squads, with strong focus on product outcomes, clean code, and mentoring Android teams.</p>
+								<p class="lead mb-4 text-main">Senior Android Engineer with 9.5+ years of experience building and scaling Kotlin-based Android apps using Jetpack Compose, MVVM, and modular architectures. Expert in Kotlin Multiplatform (KMP) and FinTech solutions, having led major feature deliveries like AI-driven Smart Insights and personalized banking for UOB TMRW. Skilled in Coroutines, Flow, and RxJava for reactive programming, with expertise in secure app development (SSL pinning, PCI DSS, fraud detection) and CI/CD pipelines.</p>
 
                                 <!-- Audio Introduction -->
-                                <div class="bg-light p-4 rounded-3 mb-4">
-                                    <h5 class="mb-3 fw-bold d-flex align-items-center">
-                                        <i class="icon-mic text-primary me-2"></i>
+                                <div class="glass-card p-4 rounded-xl mb-4 shadow-soft">
+                                    <h5 class="mb-3 fw-bold d-flex align-items-center text-main">
+                                        <i class="fas fa-microphone-alt text-primary me-3"></i>
                                         Listen to My Introduction
                                     </h5>
-                                    <div class="audio-player">
-                                        <audio id="introduction-audio" controls style="width: 100%; max-width: 400px;">
+                                    <div class="audio-player p-3 rounded-xl border">
+                                        <audio id="introduction-audio">
                                             <source src="audio/introduction.m4a" type="audio/mp4">
                                             Your browser does not support the audio element.
                                         </audio>
-                                        <p class="small text-muted mt-2 mb-0">
-                                            <a href="audio/introduction.m4a" target="_blank" download class="text-primary">
-                                                <i class="icon-download"></i> Download audio
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-primary play-pause-btn me-3">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <div class="flex-grow-1">
+                                                <div class="progress" style="height: 6px; cursor: pointer; background-color: rgba(255,255,255,0.1);">
+                                                    <div class="progress-bar" role="progressbar" style="width: 0%; background: var(--primary-gradient);"></div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mt-2">
+                                                    <span class="small current-time text-muted" style="font-size: 0.7rem;">0:00</span>
+                                                    <span class="small duration text-muted" style="font-size: 0.7rem;">0:00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="small text-muted mt-3 mb-0 text-center">
+                                            <a href="audio/introduction.m4a" target="_blank" download class="text-primary text-decoration-none">
+                                                <i class="fas fa-download me-2"></i> Download audio
                                             </a>
                                         </p>
                                     </div>
                                 </div>
 								
-								<div class="achievements bg-light p-4 rounded-3 mb-4">
-									<h5 class="mb-3 fw-bold">Key Achievements</h5>
+								<div class="achievements glass-card p-4 rounded-xl mb-4 shadow-soft">
+									<h5 class="mb-3 fw-bold text-main">Key Achievements</h5>
 									<ul class="list-unstyled mb-0">
-										<li class="mb-2">
+										<li class="mb-3">
 											<div class="d-flex">
-												<i class="icon-check text-success me-2 mt-1"></i>
-												<span>Improved test coverage from 45% → 85%, reducing QA cycles by 40% with automated testing frameworks (JUnit, Espresso, Mockito)</span>
+												<i class="fas fa-check-circle text-success me-3 mt-1"></i>
+												<span class="text-main">Successfully led the UI/UX refresh and feature delivery for UOB TMRW, integrating AI-driven Smart Insights and personalized banking alerts for millions of users.</span>
 											</div>
 										</li>
-										<li class="mb-2">
+										<li class="mb-3">
 											<div class="d-flex">
-												<i class="icon-check text-success me-2 mt-1"></i>
-												<span>Contributed to apps serving 10M+ users across 4 countries, ensuring scalability, security, and WCAG accessibility compliance</span>
+												<i class="fas fa-check-circle text-success me-3 mt-1"></i>
+												<span class="text-main">Architected and delivered professional Kotlin Multiplatform (KMP) applications, sharing up to 80% of code across Android and iOS.</span>
+											</div>
+										</li>
+										<li class="mb-3">
+											<div class="d-flex">
+												<i class="fas fa-check-circle text-success me-3 mt-1"></i>
+												<span class="text-main">Improved test coverage from 45% → 85%, reducing QA cycles by 40% with automated testing frameworks (JUnit, Espresso, Mockito)</span>
+											</div>
+										</li>
+										<li>
+											<div class="d-flex">
+												<i class="fas fa-check-circle text-success me-3 mt-1"></i>
+												<span class="text-main">Contributed to apps serving 10M+ users across 4 countries, ensuring scalability, security, and WCAG accessibility compliance</span>
 											</div>
 										</li>
 									</ul>
@@ -528,29 +479,59 @@
 								
 								<div class="row g-4">
 									<div class="col-md-6">
-										<div class="p-4 bg-light rounded-3 h-100">
-											<h5 class="fw-bold mb-3">Technical Expertise</h5>
+										<div class="p-4 glass-card rounded-xl h-100 shadow-soft">
+											<h5 class="fw-bold mb-3 text-main">Languages & Frameworks</h5>
 											<div class="d-flex flex-wrap gap-2">
-												<span class="badge bg-white text-dark border border-1">Kotlin</span>
-												<span class="badge bg-white text-dark border border-1">Jetpack Compose</span>
-												<span class="badge bg-white text-dark border border-1">MVVM</span>
-												<span class="badge bg-white text-dark border border-1">Coroutines</span>
-												<span class="badge bg-white text-dark border border-1">RxJava</span>
-												<span class="badge bg-white text-dark border border-1">Clean Architecture</span>
-												<span class="badge bg-white text-dark border border-1">Dagger/Hilt</span>
-												<span class="badge bg-white text-dark border border-1">Room</span>
+												<span class="badge badge-tech">Kotlin (KMP/CMP)</span>
+												<span class="badge badge-tech">Jetpack Compose</span>
+												<span class="badge badge-tech">Java / JNI</span>
+												<span class="badge badge-tech">Coroutines & Flow</span>
+												<span class="badge badge-tech">MVVM / MVI</span>
+												<span class="badge badge-tech">Clean Architecture</span>
+                                                <span class="badge badge-tech">Material Design 3</span>
+                                                <span class="badge badge-tech">EMV Payments</span>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="p-4 bg-light rounded-3 h-100">
-											<h5 class="fw-bold mb-3">Domain Experience</h5>
+										<div class="p-4 glass-card rounded-xl h-100 shadow-soft">
+											<h5 class="fw-bold mb-3 text-main">Testing & DevOps</h5>
 											<div class="d-flex flex-wrap gap-2">
-												<span class="badge bg-white text-dark border border-1">Banking & Finance</span>
-												<span class="badge bg-white text-dark border border-1">E-commerce</span>
-												<span class="badge bg-white text-dark border border-1">Healthcare</span>
-												<span class="badge bg-white text-dark border border-1">Telecom</span>
-												<span class="badge bg-white text-dark border border-1">Security</span>
+												<span class="badge badge-tech">JUnit / Mockito</span>
+												<span class="badge badge-tech">Espresso / Barista</span>
+												<span class="badge badge-tech">Snapshot Testing</span>
+												<span class="badge badge-tech">Jenkins / GHA</span>
+												<span class="badge badge-tech">SonarQube</span>
+                                                <span class="badge badge-tech">Perfecto</span>
+                                                <span class="badge badge-tech">Firebase</span>
+                                                <span class="badge badge-tech">Play Console</span>
+											</div>
+										</div>
+									</div>
+                                    <div class="col-md-6">
+										<div class="p-4 glass-card rounded-xl h-100 shadow-soft">
+											<h5 class="fw-bold mb-3 text-main">Specialist Expertise</h5>
+											<div class="d-flex flex-wrap gap-2">
+												<span class="badge badge-tech">AI Feature Integration</span>
+												<span class="badge badge-tech">Secure Architecture</span>
+												<span class="badge badge-tech">SSL Pinning</span>
+												<span class="badge badge-tech">PCI DSS</span>
+												<span class="badge badge-tech">WCAG Accessibility</span>
+                                                <span class="badge badge-tech">Mentorship (6+ devs)</span>
+                                                <span class="badge badge-tech">Performance Opt</span>
+											</div>
+										</div>
+									</div>
+                                    <div class="col-md-6">
+										<div class="p-4 glass-card rounded-xl h-100 shadow-soft">
+											<h5 class="fw-bold mb-3 text-main">APIs & Cloud</h5>
+											<div class="d-flex flex-wrap gap-2">
+												<span class="badge badge-tech">Retrofit / Ktor</span>
+												<span class="badge badge-tech">REST / GraphQL</span>
+												<span class="badge badge-tech">ThreatMetrix</span>
+												<span class="badge badge-tech">Google Maps SDK</span>
+												<span class="badge badge-tech">AWS / GCP</span>
+                                                <span class="badge badge-tech">Rust (Exploration)</span>
 											</div>
 										</div>
 									</div>
@@ -573,7 +554,7 @@
 			</div>
 			<div class="row justify-content-center mt-5">
 				<div class="col-md-6 text-center ftco-animate">
-					<p><a href="https://drive.google.com/file/d/1AZVC9YflX4OoLEnYBF4qZCZ0inSR_Y2b/view?usp=share_link" class="btn btn-primary py-4 px-5" target="_blank" rel="noopener">Download CV</a></p>
+					<p><a href="MOHAMMAD ASIF ZAFAR-july31.pdf" class="btn btn-primary py-4 px-5" target="_blank" rel="noopener">Download CV</a></p>
 				</div>
 			</div>
 			<br>
@@ -586,18 +567,72 @@
 			</div>
 			<br>
 
+			<div class="bento-grid">
+                <div class="bento-item glass-card">
+                    <h5 class="fw-bold mb-3 text-primary">Languages & Frameworks</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-tech">Kotlin (KMP/CMP)</span>
+                        <span class="badge badge-tech">Jetpack Compose</span>
+                        <span class="badge badge-tech">Java / JNI</span>
+                        <span class="badge badge-tech">Coroutines & Flow</span>
+                        <span class="badge badge-tech">MVVM / MVI</span>
+                        <span class="badge badge-tech">Clean Architecture</span>
+                        <span class="badge badge-tech">Material Design 3</span>
+                        <span class="badge badge-tech">EMV Payments</span>
+                    </div>
+                </div>
+                <div class="bento-item glass-card">
+                    <h5 class="fw-bold mb-3 text-primary">Testing & DevOps</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-tech">JUnit / Mockito</span>
+                        <span class="badge badge-tech">Espresso / Barista</span>
+                        <span class="badge badge-tech">Snapshot Testing</span>
+                        <span class="badge badge-tech">Jenkins / GHA</span>
+                        <span class="badge badge-tech">SonarQube</span>
+                        <span class="badge badge-tech">Perfecto</span>
+                        <span class="badge badge-tech">Firebase</span>
+                        <span class="badge badge-tech">Play Console</span>
+                    </div>
+                </div>
+                <div class="bento-item glass-card">
+                    <h5 class="fw-bold mb-3 text-primary">Specialist Expertise</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-tech">AI Feature Integration</span>
+                        <span class="badge badge-tech">Secure Architecture</span>
+                        <span class="badge badge-tech">SSL Pinning</span>
+                        <span class="badge badge-tech">PCI DSS</span>
+                        <span class="badge badge-tech">WCAG Accessibility</span>
+                        <span class="badge badge-tech">Mentorship (6+ devs)</span>
+                        <span class="badge badge-tech">Performance Opt</span>
+                    </div>
+                </div>
+                <div class="bento-item glass-card">
+                    <h5 class="fw-bold mb-3 text-primary">APIs & Cloud</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-tech">Retrofit / Ktor</span>
+                        <span class="badge badge-tech">REST / GraphQL</span>
+                        <span class="badge badge-tech">ThreatMetrix</span>
+                        <span class="badge badge-tech">Google Maps SDK</span>
+                        <span class="badge badge-tech">AWS / GCP</span>
+                        <span class="badge badge-tech">Rust (Exploration)</span>
+                    </div>
+                </div>
+            </div>
+
 			<div class="row">
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate h-100">
-                        <div class="icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: #f5f5ff; border-radius: 50%; margin-bottom: 1.5rem;">
-                            <i class="icon-briefcase" style="font-size: 1.5rem; color: #3f51b5;"></i>
+					<div class="resume-wrap glass-card ftco-animate h-100">
+                        <div class="icon d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: rgba(99, 102, 241, 0.1); border-radius: 50%; margin-bottom: 1.5rem;">
+                            <i class="icon-briefcase" style="font-size: 1.5rem; color: var(--primary-color);"></i>
                         </div>
                         <span class="date">Jan 2023 - Present</span>
-                        <h2>Senior Android Developer</h2>
-						<span class="position">UOB Bank | Kotlin, Java, Jetpack Compose, Retrofit, Hilt/Koin, Espresso, Jenkins, Perfecto, SonarQube</span>
-						<p class="mt-4">
+                        <h2 class="text-main mt-3">Senior Android Developer</h2>
+						<span class="position text-primary">UOB Bank | Kotlin, Java, Jetpack Compose, Retrofit, Hilt/Koin, Espresso, Jenkins, Perfecto, SonarQube</span>
+						<p class="mt-4 text-muted">
 							<ul>
-								<li><strong>Modular Architecture & Compose Integration:</strong> Built scalable, modularized Android 10+ architecture using Kotlin, Jetpack Compose, MVVM, and Coordinators, aligning with Google Android architecture guidelines and enabling feature-driven delivery. Delivered customer-facing digital banking features with an emphasis on performance optimization, secure real-time data handling, and resource efficiency principles.</li>
+								<li><strong>Modular Architecture & Compose Integration:</strong> Built scalable, modularized Android 10+ architecture using Kotlin, Jetpack Compose, MVVM, and Coordinators, aligning with Google Android architecture guidelines and enabling feature-driven delivery. Optimized performance for resource-efficient mobile apps.</li>
+								<li><strong>Personalised Banking & Smart Insights:</strong> Engineered "Smart Insights" features (as seen in UOB TMRW) providing users with personalised alerts, cash flow analysis, and actionable financial insights, significantly enhancing user engagement.</li>
+								<li><strong>Seamless Payment & Transfer Workflows:</strong> Optimized multi-country transfer and payment journeys, enabling effortless transactions and bill payments through a refreshed, intuitive UI/UX modernization.</li>
 								<li><strong>Client-Facing Delivery & Collaboration:</strong> Collaborated in cross-functional Agile squads with Product Managers, Designers, and Backend Engineers to define API contracts, refine features, and align delivery with product goals and customer outcomes.</li>
 								<li><strong>Secure App Flows:</strong> Integrated ThreatMetrix to analyze 150+ real-time fraud indicators; enforced SSL pinning, encrypted storage, and secure onboarding flows.</li>
 								<li><strong>Testing Strategy & Automation:</strong> Enhanced test coverage from 45% → 85% with JUnit, Mockito, Espresso, and Happo-style snapshot tests, improving release stability and reducing manual QA regression effort by 40% and supporting stable weekly CI deployments.</li>
@@ -611,11 +646,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
+					<div class="resume-wrap glass-card ftco-animate">
 						<span class="date">Apr 2021 - Dec 2022</span>
-						<h2>Senior Android Developer</h2>
-						<span class="position">Tata Consultancy Services (Star Alliance) | Java, Kotlin, Android Studio, Amazon AWS Pipeline, S3 bucket</span>
-						<p class="mt-4">
+						<h2 class="text-main mt-3">Senior Android Developer</h2>
+						<span class="position text-primary">Tata Consultancy Services (Star Alliance) | Java, Kotlin, Android Studio, Amazon AWS Pipeline, S3 bucket</span>
+						<p class="mt-4 text-muted">
 							<ul>
 								<li><strong>Modular Development of Frequent Flyer App:</strong> Developed and maintained customer-facing global Android apps with Kotlin, MVVM, and Jetpack libraries, ensuring Android 10+ compatibility and delivering scalable, high-quality features through close collaboration with designers and backend engineers.</li>
 								<li><strong>Jetpack Navigation & Deep Linking Integration:</strong> Implemented deep link navigation using Jetpack Navigation Component and supported partner airline linking, enhancing user onboarding across 26+ member airlines.</li>
@@ -631,11 +666,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
+					<div class="resume-wrap glass-card ftco-animate">
 						<span class="date">Feb 2018 - Jan 2021</span>
-						<h2>Executive Android Developer</h2>
-						<span class="position">Adaptive Control Security Global | Kotlin, Java, Android Studio, PHP</span>
-						<p class="mt-4">
+						<h2 class="text-main mt-3">Executive Android Developer</h2>
+						<span class="position text-primary">Adaptive Control Security Global | Kotlin, Java, Android Studio, PHP</span>
+						<p class="mt-4 text-muted">
 							<ul>
 								<li><strong>Custom Security App Development:</strong> Delivered MVVM/Clean Architecture Android apps in Kotlin, integrating real-time alerts, offline-first data handling, and QR scanning, improving operational response time by 50%.</li>
 								<li><strong>Real-Time Alerts & QR Code Integration:</strong> Integrated QR code scanning and real-time notifications with Firebase Cloud Messaging (FCM), reducing manual entry errors and streamlining checkpoint workflows.</li>
@@ -650,11 +685,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
+					<div class="resume-wrap glass-card ftco-animate">
 						<span class="date">Jun 2016 - Oct 2017</span>
-						<h2>Android Developer</h2>
-						<span class="position">Inteq Infocom Solution Pvt. Ltd. | Java, Android Studio</span>
-						<p class="mt-4">
+						<h2 class="text-main mt-3">Android Developer</h2>
+						<span class="position text-primary">Inteq Infocom Solution Pvt. Ltd. | Java, Android Studio</span>
+						<p class="mt-4 text-muted">
 							<ul>
 								<li><strong>e-Governance App Development:</strong> Developed a digital inspection Android app using Java and SQLite, digitizing daily site reports and increasing reporting efficiency by 60%.</li>
 								<li><strong>Offline Sync with SQLite and REST APIs:</strong> Implemented background sync logic and data caching, enabling field officers to work offline and sync data automatically when reconnected, reducing data loss incidents.</li>
@@ -679,20 +714,26 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
+					<div class="resume-wrap glass-card ftco-animate">
 						<span class="date">2012–2016</span>
-						<h2>B.Tech, Computer Engineering</h2>
-						<span class="position">Punjab Technical University, Punjab</span>
-						<p class="mt-4"></p>
+						<h2 class="text-main mt-3">B.Tech, Computer Engineering</h2>
+						<span class="position text-primary">Punjab Technical University, Punjab</span>
+					</div>
+				</div>
+
+                <div class="col-md-6">
+					<div class="resume-wrap glass-card ftco-animate">
+						<span class="date">2009–2011</span>
+						<h2 class="text-main mt-3">Senior Secondary</h2>
+						<span class="position text-primary">St. Edmund’s School, Jaipur</span>
 					</div>
 				</div>
 
 				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
+					<div class="resume-wrap glass-card ftco-animate">
 						<span class="date">2000–2009</span>
-						<h2>Secondary</h2>
-						<span class="position">St. Andrew’s School</span>
-						<p class="mt-4"></p>
+						<h2 class="text-main mt-3">Secondary</h2>
+						<span class="position text-primary">St. Andrew’s School</span>
 					</div>
 				</div>
 			</div>
@@ -704,37 +745,104 @@
 
 
 
-	<section class="ftco-section pt-5" id="project-section" style="background-color: #f8f9fa;">
+	<section class="ftco-section pt-5" id="project-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-lg-8 text-center">
-					<span class="text-primary mb-2 d-block">PORTFOLIO</span>
-					<h2 class="mb-4">Featured Projects</h2>
+					<span class="text-primary mb-2 d-block fw-bold">PORTFOLIO</span>
+					<h2 class="mb-4 text-main">Featured Projects</h2>
 					<p class="lead text-muted">Showcasing my expertise in Android development through innovative solutions</p>
-					<div class="divider mx-auto my-4" style="width: 80px; height: 3px; background: #3f51b5;"></div>
+					<div class="divider mx-auto my-4" style="width: 80px; height: 3px; background: var(--primary-gradient);"></div>
 				</div>
 			</div>
 			<div class="row g-4">
-				<!-- UOB TMRW & Mighty -->
+				<!-- MedBuddy -->
 				<div class="col-md-4 d-flex ftco-animate mb-4">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden">
-                    <div class="position-relative" style="height: 200px; overflow: hidden;">
-                        <img src="images/UOB_TMWR.png" class="w-100 h-100 object-fit-cover" alt="UOB TMRW & Mighty">
-                        <div class="position-absolute top-0 end-0 m-3">
-                            <span class="badge bg-primary rounded-pill px-3 py-2">Featured</span>
+                    <div class="blog-entry h-100 w-100 glass-card">
+                        <div class="block-20" style="background-image: url('images/med_buddy_overview.png');">
+                            <div class="position-absolute top-0 end-0 p-2 z-1">
+                                <span class="badge bg-primary text-white">KMP / Health</span>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="text-main">MedBuddy - Diabetes Manager</h3>
+                            <p class="text-muted">Professional Kotlin Multiplatform (KMP) app for blood glucose tracking. Features intelligent dashboards, advanced analytics with cubic bezier charts, and real-time Firebase synchronization.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">KMP</span>
+                                <span class="badge badge-tech">Compose</span>
+                                <span class="badge badge-tech">Firebase</span>
+                            </div>
+                            <a href="https://github.com/mohammad-asif-zafar/MedBuddy/tree/release_2.1" class="btn btn-primary btn-sm" target="_blank">
+                                View GitHub <i class="icon-github ml-1"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="card-body p-4">
-                        <h3 class="h5 mb-3">UOB TMRW & Mighty</h3>
-                        <p class="text-muted mb-4">Multi-country banking features with Kotlin, Retrofit, Jetpack Compose, and Threat Metrix integration. Delivered secure and scalable banking solutions across multiple Southeast Asian markets.</p>
-                        <div class="mb-4">
-                            <span class="badge bg-light text-dark me-2 mb-2">Kotlin</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">Jetpack Compose</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">MVVM</span>
-                            <span class="badge bg-light text-dark me-2 mb-2">Clean Architecture</span>
+                </div>
+
+				<!-- Ramadan Kareem 2026 -->
+				<div class="col-md-4 d-flex ftco-animate mb-4">
+                    <div class="blog-entry h-100 w-100 glass-card">
+                        <div class="block-20" style="background-image: url('images/ramadan -app_overview.png.png');">
+                            <div class="position-absolute top-0 end-0 p-2 z-1">
+                                <span class="badge bg-primary text-white">Utility / Islamic</span>
+                            </div>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.uob.mightyth2" class="btn btn-outline-primary w-100" target="_blank" rel="noopener noreferrer">
-                            View on Play Store <i class="icon-arrow-right ms-1"></i>
+                        <div class="text">
+                            <h3 class="text-main">Ramadan Kareem 2026</h3>
+                            <p class="text-muted">A comprehensive spiritual companion featuring location-based prayer times, complete Quran with audio, Zakat calculator, and Qibla compass. Engineered with Jetpack Compose and MVVM.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">Kotlin</span>
+                                <span class="badge badge-tech">Compose</span>
+                                <span class="badge badge-tech">Hilt</span>
+                            </div>
+                            <a href="https://github.com/mohammad-asif-zafar/Ramadan-Kareem-2026/tree/release/2.0" class="btn btn-primary btn-sm" target="_blank">
+                                View GitHub <i class="icon-github ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- PocketGoals -->
+				<div class="col-md-4 d-flex ftco-animate mb-4">
+                    <div class="blog-entry h-100 w-100 glass-card">
+                        <div class="block-20" style="background-image: url('images/pocketgoals_overview.png');">
+                            <div class="position-absolute top-0 end-0 p-2 z-1">
+                                <span class="badge bg-primary text-white">KMP / Productivity</span>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="text-main">PocketGoals</h3>
+                            <p class="text-muted">Cross-platform goal-tracking application built with Kotlin Multiplatform. Shares business logic and UI components across Android and iOS using Compose Multiplatform.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">KMP</span>
+                                <span class="badge badge-tech">Compose</span>
+                                <span class="badge badge-tech">SwiftUI</span>
+                            </div>
+                            <a href="https://github.com/mohammad-asif-zafar/PocketGoals" class="btn btn-primary btn-sm" target="_blank">
+                                View GitHub <i class="icon-github ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- UOB TMRW & Mighty -->
+				<div class="col-md-4 d-flex ftco-animate mb-4">
+                    <div class="blog-entry h-100 w-100 glass-card">
+                    <div class="block-20" style="background-image: url('images/UOB_TMWR.png');">
+                        <div class="position-absolute top-0 end-0 p-2 z-1">
+                            <span class="badge bg-primary text-white">FinTech</span>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <h3 class="text-main">UOB TMRW & Mighty</h3>
+                        <p class="text-muted">Multi-country banking features with Kotlin, Retrofit, Jetpack Compose, and Threat Metrix integration. Delivered secure solutions for Southeast Asian markets.</p>
+                        <div class="tech-tags mb-3">
+                            <span class="badge badge-tech">Kotlin</span>
+                            <span class="badge badge-tech">Compose</span>
+                            <span class="badge badge-tech">ThreatMetrix</span>
+                        </div>
+                        <a href="https://play.google.com/store/apps/details?id=com.uob.mightyth2" class="btn btn-primary btn-sm" target="_blank">
+                            Play Store <i class="icon-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
@@ -742,22 +850,21 @@
 
 				<!-- Star Alliance Baggage Hub -->
 				<div class="col-md-4 d-flex ftco-animate mb-4">
-                    <div class="blog-entry h-100 w-100">
+                    <div class="blog-entry h-100 w-100 glass-card">
                         <div class="block-20" style="background-image: url('images/decathlon_app.jpg');">
                             <div class="position-absolute top-0 end-0 p-2 z-1">
                                 <span class="badge bg-primary text-white">Enterprise</span>
                             </div>
                         </div>
                         <div class="text">
-                            <h3>Star Alliance Baggage Hub</h3>
-                            <p>Baggage tracking and scanning app for Lufthansa & Singapore Airlines using Scandit SDK and AWS backend. Streamlined baggage handling operations with real-time tracking and scanning capabilities.</p>
-                            <div class="tech-tags">
-                                <span class="badge bg-light text-dark">Kotlin</span>
-                                <span class="badge bg-light text-dark">Scandit SDK</span>
-                                <span class="badge bg-light text-dark">AWS Amplify</span>
-                                <span class="badge bg-light text-dark">MVVM</span>
+                            <h3 class="text-main">Star Alliance Baggage Hub</h3>
+                            <p class="text-muted">Baggage tracking app for Lufthansa & Singapore Airlines using Scandit SDK and AWS backend. Streamlined operations with real-time tracking.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">Scandit</span>
+                                <span class="badge badge-tech">AWS</span>
+                                <span class="badge badge-tech">Kotlin</span>
                             </div>
-                            <a href="#" class="btn btn-sm btn-outline-primary mt-3">
+                            <a href="#" class="btn btn-primary btn-sm">
                                 View Details <i class="icon-arrow-right ml-1"></i>
                             </a>
                         </div>
@@ -766,22 +873,67 @@
 
 				<!-- Fujifilm Healthcare IT -->
 				<div class="col-md-4 d-flex ftco-animate mb-4">
-                    <div class="blog-entry h-100 w-100">
+                    <div class="blog-entry h-100 w-100 glass-card">
                         <div class="block-20" style="background-image: url('images/digilux.jpg');">
                             <div class="position-absolute top-0 end-0 p-2 z-1">
                                 <span class="badge bg-primary text-white">Healthcare</span>
                             </div>
                         </div>
                         <div class="text">
-                            <h3>Fujifilm Healthcare IT</h3>
-                            <p>Designed Android UIs for medical workflow tools, ensuring usability and high-performance rendering for clinical settings. Delivered intuitive interfaces for healthcare professionals.</p>
-                            <div class="tech-tags">
-                                <span class="badge bg-light text-dark">Java</span>
-                                <span class="badge bg-light text-dark">Android SDK</span>
-                                <span class="badge bg-light text-dark">Material Design</span>
-                                <span class="badge bg-light text-dark">UI/UX</span>
+                            <h3 class="text-main">Fujifilm Healthcare IT</h3>
+                            <p class="text-muted">Designed Android UIs for medical workflow tools, ensuring usability and high-performance rendering for clinical settings.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">Java</span>
+                                <span class="badge badge-tech">Medical UI</span>
+                                <span class="badge badge-tech">Perf Opt</span>
                             </div>
-                            <a href="#" class="btn btn-sm btn-outline-primary mt-3">
+                            <a href="#" class="btn btn-primary btn-sm">
+                                View Details <i class="icon-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AT&T Cricket SDK App -->
+				<div class="col-md-4 d-flex ftco-animate mb-4">
+                    <div class="blog-entry h-100 w-100 glass-card">
+                        <div class="block-20" style="background-image: url('images/bg_1.jpg');">
+                            <div class="position-absolute top-0 end-0 p-2 z-1">
+                                <span class="badge bg-primary text-white">Telecom</span>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="text-main">AT&T Cricket SDK App</h3>
+                            <p class="text-muted">Integrated Cricket SDK and APIs to develop optimized Android apps for carrier-specific devices and app launchers.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">SDK</span>
+                                <span class="badge badge-tech">Integration</span>
+                                <span class="badge badge-tech">Kotlin</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm">
+                                View Details <i class="icon-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sprint Voicemail -->
+				<div class="col-md-4 d-flex ftco-animate mb-4">
+                    <div class="blog-entry h-100 w-100 glass-card">
+                        <div class="block-20" style="background-image: url('images/bg_1.jpg');">
+                            <div class="position-absolute top-0 end-0 p-2 z-1">
+                                <span class="badge bg-primary text-white">Telecom</span>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <h3 class="text-main">Sprint Voicemail</h3>
+                            <p class="text-muted">Enhanced voicemail functionality for pre-OEM and BYOD Android devices, improving security and login persistence.</p>
+                            <div class="tech-tags mb-3">
+                                <span class="badge badge-tech">Security</span>
+                                <span class="badge badge-tech">OEM</span>
+                                <span class="badge badge-tech">Java</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm">
                                 View Details <i class="icon-arrow-right ml-1"></i>
                             </a>
                         </div>
@@ -789,138 +941,107 @@
                 </div>
 
 			</div>
-			<br>
-			<!-- added justify-content-center to center align the last two projects -->
-			<div class="row d-flex justify-content-center">
-				
-
-			
-
-			</div>
-		
-			
-
-			
-
-			</div>
 		</div>
-
-
-
-
-
 	</section>
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
 		<div class="container">
 			<div class="row d-md-flex align-items-center">
 				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18">
+					<div class="block-18 glass-card p-4 text-center">
 						<div class="text">
-							<strong class="number" data-number="5">0</strong>
-							<span>Achievements</span>
+							<strong class="number text-primary" data-number="5">0</strong>
+							<span class="d-block text-main">Achievements</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18">
+					<div class="block-18 glass-card p-4 text-center">
 						<div class="text">
-							<strong class="number" data-number="25">0</strong>
-							<span>Projects</span>
+							<strong class="number text-primary" data-number="25">0</strong>
+							<span class="d-block text-main">Projects</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<!-- <div class="container"> -->
+		<div class="ftco-section ftco-hireme margin-top" style="background: rgba(99,102,241,0.05); border-radius: 4rem; margin: 4rem 2rem;">
 			<div class="row justify-content-center">
 				<div class="col-md-7 ftco-animate text-center">
-					<h2>More projects on<span> Github </span> </h2>
+					<h2 class="text-main">More projects on <span class="text-primary">Github</span></h2>
 					<div class="heading">
-						<h4> Turning ideas into powerful mobile solutions with clean, scalable code.</h4>
-						<br>
-						<p><a href="https://github.com/mohammad-asif-zafar" class="btn btn-primary py-3 px-5">GitHub</a></p>
+						<h4 class="text-muted mb-4">Turning ideas into powerful mobile solutions with clean, scalable code.</h4>
+						<p><a href="https://github.com/mohammad-asif-zafar" class="btn btn-primary py-3 px-5">Explore My GitHub</a></p>
 					</div>
 				</div>
 			</div>
-		
 		</div>
 	</section>
-
-
 
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<h1 class="big big-2">Contact</h1>
-					<h2 class="mb-4">Contact Me</h2>
-					<p>Below are the details to reach out to me!</p>
+					<h2 class="mb-4 text-main">Get In Touch</h2>
+					<p class="text-muted">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
 				</div>
 			</div>
 
-			<div class="row d-flex contact-info mb-5">
+			<div class="row d-flex contact-info mb-5 g-4">
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-map-signs"></span>
+					<div class="align-self-stretch glass-card p-4 text-center w-100">
+						<div class="icon d-flex align-items-center justify-content-center mb-3">
+							<span class="icon-map-signs text-primary" style="font-size: 2rem;"></span>
 						</div>
-						<h3 class="mb-4">Address</h3>
-						<p>Kuala Lumpur , Malaysia</p>
+						<h3 class="mb-3 text-main h5">Address</h3>
+						<p class="text-muted">Kuala Lumpur, Malaysia</p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-phone2"></span>
+					<div class="align-self-stretch glass-card p-4 text-center w-100">
+						<div class="icon d-flex align-items-center justify-content-center mb-3">
+							<span class="icon-phone2 text-primary" style="font-size: 2rem;"></span>
 						</div>
-						<h3 class="mb-4">Contact Number</h3>
-						<p><a href="tel:+60183764681">+60 183764681</a></p>
+						<h3 class="mb-3 text-main h5">Phone</h3>
+						<p><a href="tel:+60183764681" class="text-muted">+60 183764681</a></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-paper-plane"></span>
+					<div class="align-self-stretch glass-card p-4 text-center w-100">
+						<div class="icon d-flex align-items-center justify-content-center mb-3">
+							<span class="icon-paper-plane text-primary" style="font-size: 2rem;"></span>
 						</div>
-						<h3 class="mb-4">Email Address</h3>
-						<p><a href="mailto:asifzafar000@yahoo.com">asifzafar000@yahoo.com</a></p>
+						<h3 class="mb-3 text-main h5">Email</h3>
+						<p><a href="mailto:asifzafar000@yahoo.com" class="text-muted">asifzafar000@yahoo.com</a></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-					<div class="align-self-stretch box p-4 text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="icon-globe"></span>
+					<div class="align-self-stretch glass-card p-4 text-center w-100">
+						<div class="icon d-flex align-items-center justify-content-center mb-3">
+							<span class="icon-globe text-primary" style="font-size: 2rem;"></span>
 						</div>
-						<h3 class="mb-4">Visit Website</h3>
-						<p><a href="#">Website</a></p>
+						<h3 class="mb-3 text-main h5">Website</h3>
+						<p><a href="#" class="text-muted">mohammad-asif-zafar.github.io</a></p>
 					</div>
 				</div>
+			</div>
 
-				<div class="container">
-					<br>
-					<br>
-					<div class="row justify-content-center">
-						<div class="col-md-7 ftco-animate text-center">
-							<h2>Have a<span> Question? </span> <a href="https://docs.google.com/forms/d/e/1FAIpQLSfai-1Ll8D-04sQ2KAS1snXF3JObpCKn0QrRf2bIh-aO4Y76w/viewform""
-									class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-						</div>
+			<div class="container text-center">
+				<div class="glass-card p-5 ftco-animate mb-5">
+					<h2 class="text-main mb-4">Have a Question?</h2>
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLSfai-1Ll8D-04sQ2KAS1snXF3JObpCKn0QrRf2bIh-aO4Y76w/viewform"
+                       class="btn btn-primary py-3 px-5 mb-4">Drop Me a Message</a>
+
+					<div class="mt-4">
+						<p class="text-main mb-3">Find me on</p>
+						<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+							<li class="ftco-animate mx-2"><a href="https://www.linkedin.com/in/mohammad-asif-zafar-61b3198b/" class="glass-card d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><span class="icon-linkedin text-main"></span></a></li>
+							<li class="ftco-animate mx-2"><a href="#" class="glass-card d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><span class="icon-twitter text-main"></span></a></li>
+							<li class="ftco-animate mx-2"><a href="#" class="glass-card d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><span class="icon-github text-main"></span></a></li>
+						</ul>
 					</div>
-					<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-						<li class="ftco-animate normal-txt">Find me on </li>
-						<li class="ftco-animate"><a href="https://www.linkedin.com/in/mohammad-asif-zafar-61b3198b/"><span
-									class="icon-linkedin"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span
-									class="icon-twitter"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span
-									class="icon-facebook"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span
-									class="icon-instagram"></span></a></li>
-					</ul>
-					<br>
 				</div>
 			</div>
 	</section>
@@ -998,19 +1119,19 @@
         playPauseBtn.addEventListener('click', function() {
             if (audio.paused) {
                 audio.play();
-                playIcon.classList.remove('icon-play');
-                playIcon.classList.add('icon-pause');
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
             } else {
                 audio.pause();
-                playIcon.classList.remove('icon-pause');
-                playIcon.classList.add('icon-play');
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
             }
         });
 
         // Update button when audio ends
         audio.addEventListener('ended', function() {
-            playIcon.classList.remove('icon-pause');
-            playIcon.classList.add('icon-play');
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
             progressBar.style.width = '0%';
             currentTimeEl.textContent = '0:00';
         });
