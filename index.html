@@ -107,7 +107,7 @@
 
         /* Glassmorphism Sections */
         section {
-            padding: 8rem 0;
+            padding: 5rem 0;
             background: transparent !important;
         }
 
@@ -221,24 +221,58 @@
             border-radius: 2rem;
             transition: var(--transition);
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .blog-entry:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
             border-color: var(--primary-color);
         }
 
         .blog-entry .block-20 {
-            height: 250px;
+            height: 220px;
             border-radius: 2rem 2rem 0 0;
-            filter: grayscale(20%);
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            filter: grayscale(10%);
             transition: var(--transition);
         }
 
         .blog-entry:hover .block-20 {
             filter: grayscale(0%);
-            transform: scale(1.05);
+            transform: scale(1.03);
+        }
+
+        .blog-entry .text {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-entry .text h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-entry .text p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .blog-entry .text .btn {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.88rem;
         }
 
         /* Modern Audio Player */
@@ -833,15 +867,15 @@
                             </div>
                         </div>
                         <div class="text">
-                            <h3 class="text-main">MedBuddy - Diabetes Manager</h3>
-                            <p class="text-muted">Professional Kotlin Multiplatform (KMP) app for blood glucose tracking. Features intelligent dashboards, advanced analytics with cubic bezier charts, and real-time Firebase synchronization.</p>
+                            <h3 class="text-main">MedBuddy - Smart Glucose Care</h3>
+                            <p class="text-muted">Smart glucose companion app for diabetes care. Features intuitive dashboard, history calendar, 7-day & 90-day reports for doctor check-ins, and daily care reminders.</p>
                             <div class="tech-tags mb-3">
                                 <span class="badge badge-tech">KMP</span>
                                 <span class="badge badge-tech">Compose</span>
                                 <span class="badge badge-tech">Firebase</span>
                             </div>
-                            <a href="https://github.com/mohammad-asif-zafar/MedBuddy/tree/release_2.1" class="btn btn-primary btn-sm" target="_blank">
-                                View GitHub <i class="icon-github ml-1"></i>
+                            <a href="https://mohammad-asif-zafar.github.io/MedBuddy/" class="btn btn-primary btn-sm" target="_blank">
+                                View Project <i class="fas fa-external-link-alt ml-1"></i>
                             </a>
                         </div>
                     </div>
