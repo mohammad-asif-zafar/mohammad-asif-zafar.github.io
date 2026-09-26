@@ -72,6 +72,10 @@ function initAuth() {
 		token: token || fallback.token || ''
 	};
 
+	console.log("initAuth initialized.");
+	console.log("Auth state:", isAuthenticated());
+	console.log("Current hash:", window.location.hash);
+
 	if ($('#input-owner').length) $('#input-owner').val(currentAuth.owner);
 	if ($('#input-repo').length) $('#input-repo').val(currentAuth.repo);
 	if ($('#input-token').length && currentAuth.token) $('#input-token').val(currentAuth.token);
@@ -101,9 +105,14 @@ function login(owner, repo, token) {
 			sessionStorage.setItem("github_token", token);
 			sessionStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(currentAuth));
 
+			console.log("GitHub authentication successful");
+			console.log("Auth state:", isAuthenticated());
+			console.log("Current hash:", window.location.hash);
+			console.log("Session:", sessionStorage);
+
 			showToast(`Authenticated successfully for ${repoData.full_name}!`, 'success');
 
-			// Explicitly set hash and trigger view transition
+			// Explicitly navigate to dashboard and trigger route rendering
 			window.location.hash = '#/dashboard';
 			handleRouting();
 		})
@@ -169,7 +178,10 @@ function ghRequest(method, endpoint, data = null) {
    ========================================================================== */
 
 function handleRouting() {
-	if (!isAuthenticated()) {
+	const authenticated = isAuthenticated();
+	console.log("handleRouting evaluating... isAuthenticated:", authenticated, "hash:", window.location.hash);
+
+	if (!authenticated) {
 		showView('login');
 		return;
 	}
@@ -179,6 +191,8 @@ function handleRouting() {
 	// Normalize hash
 	let route = (window.location.hash || '#/dashboard').replace(/^#\/?/, '');
 	if (!route || route === 'login') route = 'dashboard';
+
+	console.log("Current admin route:", route);
 
 	$('.sidebar-nav-link').removeClass('active');
 	$('.subview').addClass('d-none');
@@ -210,12 +224,13 @@ function handleRouting() {
 }
 
 function showView(view) {
+	console.log("showView executing for view:", view);
 	if (view === 'login') {
-		$('#view-login').removeClass('d-none');
-		$('#view-app').addClass('d-none');
+		$('#view-login').css('display', 'flex').removeClass('d-none');
+		$('#view-app').css('display', 'none').addClass('d-none');
 	} else {
-		$('#view-login').addClass('d-none');
-		$('#view-app').removeClass('d-none');
+		$('#view-login').css('display', 'none').addClass('d-none');
+		$('#view-app').css('display', 'block').removeClass('d-none');
 	}
 }
 

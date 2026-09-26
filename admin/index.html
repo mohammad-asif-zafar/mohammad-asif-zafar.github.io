@@ -28,7 +28,7 @@
 	<div id="toast-container" class="position-fixed" style="top: 20px; right: 20px; z-index: 9999;"></div>
 
 	<!-- LOGIN VIEW -->
-	<div id="view-login" class="d-none min-vh-100 d-flex align-items-center justify-content-center p-3">
+	<div id="view-login" class="min-vh-100 d-flex align-items-center justify-content-center p-3">
 		<div class="glass-card p-4 p-md-5 text-center" style="max-width: 480px; width: 100%;">
 			<div class="mb-4">
 				<div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 70px; height: 70px; background: rgba(99, 102, 241, 0.15); border: 2px solid var(--primary-color);">
@@ -233,20 +233,20 @@
 							<div class="row">
 								<div class="col-md-8">
 									<div class="form-group mb-3">
-										<label class="small text-muted mb-1">Article Title</label>
+										<label for="editor-title" class="small text-muted mb-1">Article Title</label>
 										<input type="text" id="editor-title" class="form-control form-control-custom" placeholder="e.g. Understanding Kotlin Coroutines" required>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group mb-3">
-										<label class="small text-muted mb-1">Slug (URL identifier)</label>
+										<label for="editor-slug" class="small text-muted mb-1">Slug (URL identifier)</label>
 										<input type="text" id="editor-slug" class="form-control form-control-custom" placeholder="understanding-kotlin-coroutines" required>
 									</div>
 								</div>
 							</div>
 
 							<div class="form-group mb-3">
-								<label class="small text-muted mb-1">Short Description / Abstract</label>
+								<label for="editor-desc" class="small text-muted mb-1">Short Description / Abstract</label>
 								<textarea id="editor-desc" class="form-control form-control-custom" rows="2" placeholder="Brief summary of the article for social preview and listing..."></textarea>
 							</div>
 
