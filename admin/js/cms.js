@@ -55,43 +55,87 @@ function initTheme() {
    ========================================================================== */
 
 function initAuth() {
+	const isAuth = sessionStorage.getItem("github_authenticated") === "true";
+	const owner = sessionStorage.getItem("github_owner") || "mohammad-asif-zafar";
+	const repo = sessionStorage.getItem("github_repo") || "mohammad-asif-zafar.github.io";
+	const token = sessionStorage.getItem("github_token") || "";
+
 	const stored = sessionStorage.getItem(CMS_STORAGE_KEY);
+	let fallback = {};
 	if (stored) {
-		try {
-			currentAuth = JSON.parse(stored);
-		} catch (e) {
-			console.error("Failed to parse auth token", e);
-		}
+		try { fallback = JSON.parse(stored); } catch (e) {}
 	}
+
+	currentAuth = {
+		owner: owner || fallback.owner || 'mohammad-asif-zafar',
+		repo: repo || fallback.repo || 'mohammad-asif-zafar.github.io',
+		token: token || fallback.token || ''
+	};
+
+	if ($('#input-owner').length) $('#input-owner').val(currentAuth.owner);
+	if ($('#input-repo').length) $('#input-repo').val(currentAuth.repo);
+	if ($('#input-token').length && currentAuth.token) $('#input-token').val(currentAuth.token);
 }
 
 function isAuthenticated() {
-	return currentAuth.token && currentAuth.owner && currentAuth.repo;
+	const authenticatedFlag = sessionStorage.getItem("github_authenticated") === "true";
+	return authenticatedFlag && !!currentAuth.token && !!currentAuth.owner && !!currentAuth.repo;
 }
 
 function login(owner, repo, token) {
 	currentAuth = { owner, repo, token };
 
-	// Validate token against GitHub API
-	showToast('Validating GitHub Token...', 'info');
+	showToast('Validating GitHub credentials...', 'info');
 
 	ghRequest('GET', `/repos/${owner}/${repo}`)
 		.then(repoData => {
+			const permissions = repoData.permissions || {};
+			if (permissions.push === false) {
+				showToast('Token validated, but lacks write permission to repository.', 'warning');
+			}
+
+			// Store session state securely in sessionStorage
+			sessionStorage.setItem("github_authenticated", "true");
+			sessionStorage.setItem("github_owner", owner);
+			sessionStorage.setItem("github_repo", repo);
+			sessionStorage.setItem("github_token", token);
 			sessionStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(currentAuth));
+
 			showToast(`Authenticated successfully for ${repoData.full_name}!`, 'success');
-			window.location.hash = '#dashboard';
+
+			// Explicitly set hash and trigger view transition
+			window.location.hash = '#/dashboard';
+			handleRouting();
 		})
 		.catch(err => {
-			showToast('Authentication failed. Please verify your token and repository permissions.', 'danger');
-			console.error("Auth error:", err);
+			sessionStorage.removeItem("github_authenticated");
+			sessionStorage.removeItem("github_token");
+
+			const errorMsg = `Authentication failed.
+
+Please verify:
+• GitHub username
+• Repository
+• Token
+• Repository permission`;
+
+			showToast(errorMsg, 'danger');
+			console.error("Auth validation failed for repository endpoint", `/repos/${owner}/${repo}`);
 		});
 }
 
 function logout() {
+	sessionStorage.removeItem("github_authenticated");
+	sessionStorage.removeItem("github_owner");
+	sessionStorage.removeItem("github_repo");
+	sessionStorage.removeItem("github_token");
 	sessionStorage.removeItem(CMS_STORAGE_KEY);
+
 	currentAuth = { owner: 'mohammad-asif-zafar', repo: 'mohammad-asif-zafar.github.io', token: '' };
-	window.location.hash = '#login';
+
 	showToast('Logged out successfully.', 'info');
+	window.location.hash = '#/login';
+	handleRouting();
 }
 
 /* ==========================================================================
@@ -131,33 +175,37 @@ function handleRouting() {
 	}
 
 	showView('app');
-	const hash = window.location.hash || '#dashboard';
+
+	// Normalize hash
+	let route = (window.location.hash || '#/dashboard').replace(/^#\/?/, '');
+	if (!route || route === 'login') route = 'dashboard';
 
 	$('.sidebar-nav-link').removeClass('active');
 	$('.subview').addClass('d-none');
 
-	if (hash === '#dashboard') {
+	if (route === 'dashboard') {
 		$('#nav-dashboard').addClass('active');
 		$('#subview-dashboard').removeClass('d-none');
 		loadDashboard();
-	} else if (hash === '#posts') {
+	} else if (route === 'posts') {
 		$('#nav-posts').addClass('active');
 		$('#subview-posts').removeClass('d-none');
 		loadPostsList();
-	} else if (hash.startsWith('#posts/new')) {
+	} else if (route.startsWith('posts/new')) {
 		$('#nav-posts-new').addClass('active');
 		$('#subview-editor').removeClass('d-none');
 		setupEditor(null);
-	} else if (hash.startsWith('#posts/edit/')) {
-		const slug = hash.replace('#posts/edit/', '');
+	} else if (route.startsWith('posts/edit/')) {
+		const slug = route.replace('posts/edit/', '');
 		$('#subview-editor').removeClass('d-none');
 		setupEditor(slug);
-	} else if (hash === '#settings') {
+	} else if (route === 'settings') {
 		$('#nav-settings').addClass('active');
 		$('#subview-settings').removeClass('d-none');
 		loadSettings();
 	} else {
-		window.location.hash = '#dashboard';
+		window.location.hash = '#/dashboard';
+		handleRouting();
 	}
 }
 
@@ -435,7 +483,8 @@ ${markdownContent}`;
 			}).then(() => {
 				// Clear local draft cache
 				localStorage.removeItem(DRAFT_STORAGE_KEY + (currentEditingSlug || 'new'));
-				window.location.hash = '#posts';
+				window.location.hash = '#/posts';
+				handleRouting();
 			});
 		})
 		.catch(err => {

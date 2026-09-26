@@ -65,7 +65,7 @@
 	<div id="view-app" class="d-none">
 		<!-- Top Header Navbar -->
 		<nav class="navbar navbar-dark bg-transparent border-bottom px-4" style="border-color: var(--border-glass) !important; background: rgba(15, 23, 42, 0.8) !important; backdrop-filter: blur(10px);">
-			<a class="navbar-brand font-weight-bold text-gradient" href="#dashboard">
+			<a class="navbar-brand font-weight-bold text-gradient" href="#/dashboard">
 				<i class="fas fa-edit me-2"></i> Portfolio CMS
 			</a>
 			<div class="d-flex align-items-center gap-3">
@@ -87,16 +87,16 @@
 				<div class="col-lg-2 col-md-3 mb-4">
 					<div class="glass-card p-3">
 						<nav class="nav flex-column">
-							<a class="sidebar-nav-link" href="#dashboard" id="nav-dashboard">
+							<a class="sidebar-nav-link" href="#/dashboard" id="nav-dashboard">
 								<i class="fas fa-chart-line"></i> Dashboard
 							</a>
-							<a class="sidebar-nav-link" href="#posts" id="nav-posts">
+							<a class="sidebar-nav-link" href="#/posts" id="nav-posts">
 								<i class="fas fa-newspaper"></i> Articles
 							</a>
-							<a class="sidebar-nav-link" href="#posts/new" id="nav-posts-new">
+							<a class="sidebar-nav-link" href="#/posts/new" id="nav-posts-new">
 								<i class="fas fa-plus-circle"></i> New Post
 							</a>
-							<a class="sidebar-nav-link" href="#settings" id="nav-settings">
+							<a class="sidebar-nav-link" href="#/settings" id="nav-settings">
 								<i class="fas fa-cog"></i> Settings
 							</a>
 						</nav>
@@ -110,7 +110,7 @@
 					<div id="subview-dashboard" class="subview d-none">
 						<div class="d-flex justify-content-between align-items-center mb-4">
 							<h4 class="fw-bold mb-0">Dashboard Overview</h4>
-							<a href="#posts/new" class="btn btn-gradient">
+							<a href="#/posts/new" class="btn btn-gradient">
 								<i class="fas fa-plus me-1"></i> Create Article
 							</a>
 						</div>
@@ -169,7 +169,7 @@
 					<div id="subview-posts" class="subview d-none">
 						<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
 							<h4 class="fw-bold mb-0">Article Management</h4>
-							<a href="#posts/new" class="btn btn-gradient">
+							<a href="#/posts/new" class="btn btn-gradient">
 								<i class="fas fa-plus me-1"></i> New Post
 							</a>
 						</div>
@@ -181,7 +181,7 @@
 									<input type="text" id="filter-posts-search" aria-label="Search posts" class="form-control form-control-custom" placeholder="Search posts by title, category, tag...">
 								</div>
 								<div class="col-md-4">
-									<select id="filter-posts-status" class="form-control form-control-custom">
+									<select id="filter-posts-status" aria-label="Filter posts status" class="form-control form-control-custom">
 										<option value="ALL">All Statuses</option>
 										<option value="PUBLISHED">Published Only</option>
 										<option value="DRAFT">Drafts Only</option>
@@ -215,7 +215,7 @@
 					<div id="subview-editor" class="subview d-none">
 						<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
 							<div class="d-flex align-items-center gap-2">
-								<a href="#posts" class="btn btn-sm btn-outline-light rounded-circle me-2"><i class="fas fa-arrow-left"></i></a>
+								<a href="#/posts" class="btn btn-sm btn-outline-light rounded-circle me-2"><i class="fas fa-arrow-left"></i></a>
 								<h4 id="editor-heading" class="fw-bold mb-0">Create New Article</h4>
 							</div>
 							<div class="d-flex gap-2">
