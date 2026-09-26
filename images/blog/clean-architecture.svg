@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="textGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bgGrad3)"/>
+  <rect x="50" y="50" width="700" height="350" rx="24" fill="rgba(15, 23, 42, 0.7)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2"/>
+  <text x="400" y="200" font-family="'Poppins', sans-serif" font-size="36" font-weight="bold" fill="url(#textGrad3)" text-anchor="middle">Android Clean Architecture</text>
+  <text x="400" y="250" font-family="'Poppins', sans-serif" font-size="20" fill="#94a3b8" text-anchor="middle">MVI, UDF &amp; Scalable Layering</text>
+  <rect x="310" y="280" width="180" height="36" rx="18" fill="rgba(129, 140, 248, 0.2)" stroke="rgba(129, 140, 248, 0.5)"/>
+  <text x="400" y="303" font-family="'Poppins', sans-serif" font-size="14" font-weight="600" fill="#f8fafc" text-anchor="middle">ARCHITECTURE</text>
+</svg>

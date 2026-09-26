@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Blog | Mohammad Asif Zafar - Senior Android Engineer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Technical articles, guides, and insights on Android Development, Kotlin, Jetpack Compose, and Kotlin Multiplatform by Mohammad Asif Zafar.">
+
+	<!-- Canonical & SEO -->
+	<meta property="og:title" content="Blog | Mohammad Asif Zafar - Senior Android Engineer">
+	<meta property="og:description" content="Technical articles and guides on Android, Kotlin, Jetpack Compose, and KMP.">
+	<meta property="og:type" content="website">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+	<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/owl.carousel.min.css">
+	<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../css/magnific-popup.css">
+	<link rel="stylesheet" href="../css/aos.css">
+	<link rel="stylesheet" href="../css/ionicons.min.css">
+	<link rel="stylesheet" href="../css/flaticon.css">
+	<link rel="stylesheet" href="../css/icomoon.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+	<style>
+		:root {
+			--primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+			--primary-color: #6366f1;
+			--primary-dark: #4f46e5;
+			--secondary-color: #ec4899;
+			--bg-dark: #0f172a;
+			--bg-card: rgba(15, 23, 42, 0.9);
+			--text-main: #f8fafc;
+			--text-muted: #94a3b8;
+			--border-glass: rgba(255, 255, 255, 0.1);
+			--shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+			--transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+
+		body {
+			background-color: var(--bg-dark) !important;
+			background-image:
+				radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+			color: var(--text-main) !important;
+			font-family: 'Poppins', sans-serif;
+			overflow-x: hidden;
+			line-height: 1.7;
+		}
+
+		.ftco_navbar {
+			background: rgba(15, 23, 42, 0.8) !important;
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border-glass);
+			padding: 1.2rem 0;
+		}
+
+		.ftco_navbar .navbar-brand {
+			font-weight: 900;
+			letter-spacing: -1px;
+			background: var(--primary-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.ftco_navbar .nav-link {
+			color: var(--text-main) !important;
+			font-weight: 500;
+			opacity: 0.8;
+			transition: var(--transition);
+		}
+
+		.ftco_navbar .nav-link:hover, .ftco_navbar .nav-link.active {
+			opacity: 1;
+			color: var(--primary-color) !important;
+		}
+
+		.glass-card {
+			background: var(--bg-card) !important;
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid var(--border-glass);
+			border-radius: 1.5rem;
+			box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+			transition: var(--transition);
+		}
+
+		.glass-card:hover {
+			border-color: rgba(99, 102, 241, 0.5);
+			box-shadow: var(--shadow-glow);
+		}
+
+		.badge-category {
+			background: rgba(99, 102, 241, 0.15);
+			color: var(--primary-color);
+			border: 1px solid rgba(99, 102, 241, 0.3);
+			border-radius: 1rem;
+			padding: 0.3rem 0.8rem;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.badge-tag {
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text-muted);
+			border: 1px solid var(--border-glass);
+			border-radius: 0.8rem;
+			padding: 0.2rem 0.6rem;
+			font-size: 0.7rem;
+			transition: var(--transition);
+		}
+
+		.badge-tag:hover {
+			color: var(--text-main);
+			border-color: var(--primary-color);
+		}
+
+		.category-pill {
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text-muted);
+			border: 1px solid var(--border-glass);
+			border-radius: 2rem;
+			padding: 0.5rem 1.2rem;
+			font-size: 0.85rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: var(--transition);
+			display: inline-block;
+			margin: 0.25rem;
+		}
+
+		.category-pill.active, .category-pill:hover {
+			background: var(--primary-gradient);
+			color: #fff !important;
+			border-color: transparent;
+			box-shadow: var(--shadow-glow);
+		}
+
+		.search-input {
+			background: rgba(15, 23, 42, 0.7) !important;
+			border: 1px solid var(--border-glass) !important;
+			color: var(--text-main) !important;
+			border-radius: 2rem !important;
+			padding: 0.8rem 1.5rem !important;
+		}
+
+		.search-input:focus {
+			border-color: var(--primary-color) !important;
+			box-shadow: var(--shadow-glow) !important;
+			outline: none;
+		}
+
+		.blog-card-img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			border-top-left-radius: 1.5rem;
+			border-top-right-radius: 1.5rem;
+		}
+
+		.featured-card-img {
+			width: 100%;
+			height: 100%;
+			min-height: 260px;
+			object-fit: cover;
+			border-top-left-radius: 1.5rem;
+			border-bottom-left-radius: 1.5rem;
+		}
+
+		@media (max-width: 767.98px) {
+			.featured-card-img {
+				border-bottom-left-radius: 0;
+				border-top-right-radius: 1.5rem;
+				height: 200px;
+			}
+		}
+
+		.btn-primary-custom {
+			background: var(--primary-gradient);
+			color: #fff;
+			border: none;
+			border-radius: 1.5rem;
+			padding: 0.6rem 1.5rem;
+			font-weight: 600;
+			transition: var(--transition);
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none !important;
+		}
+
+		.btn-primary-custom:hover {
+			color: #fff;
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-glow);
+		}
+
+		.text-gradient {
+			background: var(--primary-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="../index.html">Asif Zafar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="../index.html#about-section" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="../index.html#resume-section" class="nav-link"><span>Resume</span></a></li>
+					<li class="nav-item"><a href="../index.html#project-section" class="nav-link"><span>Projects</span></a></li>
+					<li class="nav-item"><a href="index.html" class="nav-link active"><span>Blog</span></a></li>
+					<li class="nav-item"><a href="../index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Blog Header Section -->
+	<section class="py-5 style-header" style="margin-top: 5rem;">
+		<div class="container">
+			<div class="text-center mb-5">
+				<h1 class="display-4 font-weight-bold text-gradient mb-3">Engineering Blog</h1>
+				<p class="lead text-muted mx-auto" style="max-width: 650px;">
+					Deep dives into Android Engineering, Kotlin Coroutines, Jetpack Compose, Kotlin Multiplatform, and Clean Architecture.
+				</p>
+
+				<!-- Search Input -->
+				<div class="row justify-content-center mt-4">
+					<div class="col-md-8 col-lg-6">
+						<div class="position-relative">
+							<input type="text" id="blog-search" aria-label="Search articles" class="form-control search-input pl-4 pr-5" placeholder="Search by title, topic, or keyword...">
+							<i class="fas fa-search position-absolute text-muted" style="right: 20px; top: 50%; transform: translateY(-50%);"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- Category Filters -->
+				<div class="mt-4" id="category-filters">
+					<span class="category-pill active" data-category="ALL">All Posts</span>
+					<!-- Categories dynamically injected -->
+				</div>
+			</div>
+
+			<!-- Featured Article Container -->
+			<div id="featured-post-container" class="mb-5">
+				<!-- Dynamically injected -->
+			</div>
+
+			<!-- Blog Articles Grid -->
+			<div id="blog-posts-grid" class="row g-4">
+				<!-- Dynamically injected -->
+			</div>
+
+			<!-- Empty Search State -->
+			<div id="no-posts-found" class="text-center py-5 d-none">
+				<i class="fas fa-search-minus fa-3x text-muted mb-3"></i>
+				<h4 class="text-main">No articles found</h4>
+				<p class="text-muted">Try tweaking your search query or selected category.</p>
+			</div>
+
+			<!-- Pagination -->
+			<div id="pagination-container" class="d-flex justify-content-center mt-5">
+				<!-- Dynamically injected if needed -->
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="py-4 border-top border-secondary mt-5" style="border-color: var(--border-glass) !important;">
+		<div class="container text-center text-muted small">
+			<p class="mb-0">&copy; <script>document.write(new Date().getFullYear());</script> Mohammad Asif Zafar. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	<script>
+		let allPosts = [];
+		let activeCategory = 'ALL';
+		let searchQuery = '';
+
+		$(document).ready(function() {
+			loadPosts();
+
+			$('#blog-search').on('input', function() {
+				searchQuery = $(this).val().toLowerCase().trim();
+				renderBlog();
+			});
+
+			$(document).on('click', '.category-pill', function() {
+				$('.category-pill').removeClass('active');
+				$(this).addClass('active');
+				activeCategory = $(this).data('category');
+				renderBlog();
+			});
+		});
+
+		function loadPosts() {
+			$.getJSON('../content/posts.json', function(data) {
+				allPosts = data.posts ? data.posts.filter(p => p.published) : [];
+				renderCategories(data.categories || []);
+				renderBlog();
+			}).fail(function(err) {
+				console.error("Failed to load posts.json", err);
+				$('#blog-posts-grid').html('<div class="col-12 text-center text-muted py-5">Unable to load blog articles at this time.</div>');
+			});
+		}
+
+		function renderCategories(categories) {
+			let html = '<span class="category-pill active" data-category="ALL">All Posts</span>';
+			categories.forEach(cat => {
+				html += `<span class="category-pill" data-category="${cat}">${cat}</span>`;
+			});
+			$('#category-filters').html(html);
+		}
+
+		function renderBlog() {
+			let filtered = allPosts.filter(post => {
+				const matchesCategory = (activeCategory === 'ALL') || (post.category === activeCategory);
+				const matchesSearch = !searchQuery ||
+					post.title.toLowerCase().includes(searchQuery) ||
+					post.description.toLowerCase().includes(searchQuery) ||
+					(post.tags && post.tags.some(t => t.toLowerCase().includes(searchQuery))) ||
+					(post.category && post.category.toLowerCase().includes(searchQuery));
+				return matchesCategory && matchesSearch;
+			});
+
+			if (filtered.length === 0) {
+				$('#featured-post-container').html('');
+				$('#blog-posts-grid').html('');
+				$('#no-posts-found').removeClass('d-none');
+				return;
+			}
+
+			$('#no-posts-found').addClass('d-none');
+
+			// Featured Article (First matching article when no search/category filter active)
+			let postsToDisplay = [...filtered];
+			if (activeCategory === 'ALL' && !searchQuery && postsToDisplay.length > 0) {
+				const featured = postsToDisplay.shift();
+				renderFeaturedPost(featured);
+			} else {
+				$('#featured-post-container').html('');
+			}
+
+			// Grid Articles
+			let gridHtml = '';
+			postsToDisplay.forEach(post => {
+				const tagsHtml = (post.tags || []).map(tag => `<span class="badge-tag me-1 mb-1">${tag}</span>`).join(' ');
+				gridHtml += `
+					<div class="col-md-6 col-lg-4 mb-4">
+						<div class="glass-card h-100 d-flex flex-column">
+							<a href="post.html?slug=${post.slug}">
+								<img src="../${post.coverImage || 'images/blog/kotlin-coroutines.svg'}" class="blog-card-img" alt="${post.title}">
+							</a>
+							<div class="p-4 d-flex flex-column flex-grow-1">
+								<div class="d-flex justify-content-between align-items-center mb-2">
+									<span class="badge-category">${post.category || 'Article'}</span>
+									<span class="small text-muted">${post.readingTime || '3 min read'}</span>
+								</div>
+								<h5 class="fw-bold mb-2">
+									<a href="post.html?slug=${post.slug}" class="text-main text-decoration-none">${post.title}</a>
+								</h5>
+								<p class="text-muted small flex-grow-1 mb-3">${post.description}</p>
+								<div class="mb-3">${tagsHtml}</div>
+								<div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary" style="border-color: var(--border-glass) !important;">
+									<span class="small text-muted"><i class="far fa-calendar-alt me-1"></i> ${post.date}</span>
+									<a href="post.html?slug=${post.slug}" class="btn-primary-custom text-sm">Read <i class="fas fa-arrow-right small"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+			});
+
+			$('#blog-posts-grid').html(gridHtml);
+		}
+
+		function renderFeaturedPost(post) {
+			const tagsHtml = (post.tags || []).map(tag => `<span class="badge-tag me-1">${tag}</span>`).join(' ');
+			const html = `
+				<div class="glass-card overflow-hidden">
+					<div class="row no-gutters">
+						<div class="col-md-6">
+							<a href="post.html?slug=${post.slug}">
+								<img src="../${post.coverImage || 'images/blog/kotlin-coroutines.svg'}" class="featured-card-img" alt="${post.title}">
+							</a>
+						</div>
+						<div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-center">
+							<div class="d-flex align-items-center mb-3">
+								<span class="badge-category me-3">${post.category || 'Featured'}</span>
+								<span class="small text-muted"><i class="far fa-clock me-1"></i> ${post.readingTime || '5 min read'}</span>
+							</div>
+							<h3 class="fw-bold mb-3">
+								<a href="post.html?slug=${post.slug}" class="text-main text-decoration-none">${post.title}</a>
+							</h3>
+							<p class="text-muted mb-4">${post.description}</p>
+							<div class="mb-4">${tagsHtml}</div>
+							<div class="d-flex justify-content-between align-items-center">
+								<span class="small text-muted"><i class="far fa-calendar-alt me-1"></i> ${post.date} &bull; ${post.author}</span>
+								<a href="post.html?slug=${post.slug}" class="btn-primary-custom">Read Article <i class="fas fa-arrow-right ms-1"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			`;
+			$('#featured-post-container').html(html);
+		}
+	</script>
+</body>
+
+</html>

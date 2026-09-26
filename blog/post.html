@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title id="meta-title">Blog Article | Mohammad Asif Zafar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta id="meta-desc" name="description" content="Technical article on Android development and Kotlin by Mohammad Asif Zafar.">
+
+	<!-- Open Graph & Social SEO -->
+	<meta id="og-title" property="og:title" content="Blog Article | Mohammad Asif Zafar">
+	<meta id="og-desc" property="og:description" content="Technical article on Android development and Kotlin.">
+	<meta id="og-image" property="og:image" content="../images/blog/kotlin-coroutines.svg">
+	<meta property="og:type" content="article">
+
+	<!-- Fonts & Styles -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+	<!-- Highlight.js Syntax Highlighting Theme (Atom One Dark) -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+	<style>
+		:root {
+			--primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+			--primary-color: #6366f1;
+			--primary-dark: #4f46e5;
+			--bg-dark: #0f172a;
+			--bg-card: rgba(15, 23, 42, 0.9);
+			--text-main: #f8fafc;
+			--text-muted: #94a3b8;
+			--border-glass: rgba(255, 255, 255, 0.1);
+			--shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+			--transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+
+		body {
+			background-color: var(--bg-dark) !important;
+			background-image:
+				radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+			color: var(--text-main) !important;
+			font-family: 'Poppins', sans-serif;
+			overflow-x: hidden;
+			line-height: 1.8;
+		}
+
+		.ftco_navbar {
+			background: rgba(15, 23, 42, 0.8) !important;
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid var(--border-glass);
+			padding: 1.2rem 0;
+		}
+
+		.ftco_navbar .navbar-brand {
+			font-weight: 900;
+			letter-spacing: -1px;
+			background: var(--primary-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.ftco_navbar .nav-link {
+			color: var(--text-main) !important;
+			font-weight: 500;
+			opacity: 0.8;
+			transition: var(--transition);
+		}
+
+		.ftco_navbar .nav-link:hover, .ftco_navbar .nav-link.active {
+			opacity: 1;
+			color: var(--primary-color) !important;
+		}
+
+		.glass-card {
+			background: var(--bg-card) !important;
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid var(--border-glass);
+			border-radius: 1.5rem;
+			box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+		}
+
+		.article-cover {
+			width: 100%;
+			max-height: 420px;
+			object-fit: cover;
+			border-radius: 1.5rem;
+			margin-bottom: 2rem;
+			border: 1px solid var(--border-glass);
+		}
+
+		.badge-category {
+			background: rgba(99, 102, 241, 0.15);
+			color: var(--primary-color);
+			border: 1px solid rgba(99, 102, 241, 0.3);
+			border-radius: 1rem;
+			padding: 0.3rem 0.8rem;
+			font-size: 0.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+
+		.badge-tag {
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text-muted);
+			border: 1px solid var(--border-glass);
+			border-radius: 0.8rem;
+			padding: 0.3rem 0.8rem;
+			font-size: 0.8rem;
+			display: inline-block;
+			margin: 0.2rem;
+		}
+
+		/* Markdown Body Typography */
+		.article-body h1, .article-body h2, .article-body h3, .article-body h4 {
+			color: var(--text-main);
+			font-weight: 700;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		.article-body h1 { font-size: 2rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 0.5rem; }
+		.article-body h2 { font-size: 1.6rem; color: #c084fc; }
+		.article-body h3 { font-size: 1.3rem; }
+
+		.article-body p {
+			color: #e2e8f0;
+			font-size: 1.05rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.article-body ul, .article-body ol {
+			color: #e2e8f0;
+			margin-bottom: 1.5rem;
+			padding-left: 1.5rem;
+		}
+
+		.article-body li {
+			margin-bottom: 0.5rem;
+		}
+
+		.article-body blockquote {
+			border-left: 4px solid var(--primary-color);
+			background: rgba(99, 102, 241, 0.08);
+			padding: 1rem 1.5rem;
+			border-radius: 0 1rem 1rem 0;
+			margin: 1.5rem 0;
+			color: #cbd5e1;
+			font-style: italic;
+		}
+
+		.article-body pre {
+			background: #1e1e2e !important;
+			border: 1px solid var(--border-glass);
+			border-radius: 1rem;
+			padding: 1.2rem;
+			margin: 1.5rem 0;
+			overflow-x: auto;
+		}
+
+		.article-body code {
+			font-family: 'Fira Code', 'Courier New', Courier, monospace;
+			font-size: 0.95rem;
+		}
+
+		.article-body p code {
+			background: rgba(99, 102, 241, 0.15);
+			color: #a5b4fc;
+			padding: 0.2rem 0.5rem;
+			border-radius: 0.4rem;
+			border: 1px solid rgba(99, 102, 241, 0.2);
+		}
+
+		.article-body table {
+			width: 100%;
+			margin: 1.5rem 0;
+			border-collapse: collapse;
+			background: rgba(15, 23, 42, 0.5);
+			border-radius: 0.8rem;
+			overflow: hidden;
+		}
+
+		.article-body th, .article-body td {
+			padding: 0.8rem 1rem;
+			border: 1px solid var(--border-glass);
+			color: #e2e8f0;
+		}
+
+		.article-body th {
+			background: rgba(99, 102, 241, 0.2);
+			font-weight: 600;
+		}
+
+		.share-btn {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid var(--border-glass);
+			color: var(--text-main);
+			border-radius: 50%;
+			width: 42px;
+			height: 42px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: var(--transition);
+			text-decoration: none !important;
+		}
+
+		.share-btn:hover {
+			background: var(--primary-gradient);
+			color: #fff;
+			box-shadow: var(--shadow-glow);
+		}
+
+		.nav-article-card {
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid var(--border-glass);
+			border-radius: 1rem;
+			padding: 1.2rem;
+			transition: var(--transition);
+			text-decoration: none !important;
+			display: block;
+		}
+
+		.nav-article-card:hover {
+			border-color: var(--primary-color);
+			background: rgba(255, 255, 255, 0.06);
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="../index.html">Asif Zafar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="../index.html#about-section" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="../index.html#resume-section" class="nav-link"><span>Resume</span></a></li>
+					<li class="nav-item"><a href="../index.html#project-section" class="nav-link"><span>Projects</span></a></li>
+					<li class="nav-item"><a href="index.html" class="nav-link active"><span>Blog</span></a></li>
+					<li class="nav-item"><a href="../index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Article Section -->
+	<section class="py-5" style="margin-top: 5rem;">
+		<div class="container" style="max-width: 900px;">
+			<!-- Back Button -->
+			<div class="mb-4">
+				<a href="index.html" class="text-muted text-decoration-none small">
+					<i class="fas fa-arrow-left me-2"></i> Back to Blog
+				</a>
+			</div>
+
+			<!-- Article Loading State -->
+			<div id="article-loader" class="text-center py-5">
+				<div class="spinner-border text-primary" role="status">
+					<span class="sr-only">Loading article...</span>
+				</div>
+				<p class="text-muted mt-3">Loading article...</p>
+			</div>
+
+			<!-- Article Content Card -->
+			<div id="article-container" class="glass-card p-4 p-md-5 d-none">
+				<!-- Article Header -->
+				<div class="mb-4">
+					<div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+						<span id="post-category" class="badge-category me-2">Category</span>
+						<span class="small text-muted me-3"><i class="far fa-clock me-1"></i> <span id="post-readtime">3 min read</span></span>
+						<span class="small text-muted"><i class="far fa-calendar-alt me-1"></i> Published: <span id="post-date">2026-03-01</span></span>
+					</div>
+
+					<h1 id="post-title" class="fw-bold mb-3">Article Title</h1>
+					<p id="post-description" class="lead text-muted mb-4">Article description...</p>
+
+					<div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary" style="border-color: var(--border-glass) !important;">
+						<div class="d-flex align-items-center">
+							<img src="../images/about-me.png" class="rounded-circle me-3" alt="Author" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid var(--primary-color);">
+							<div>
+								<h6 id="post-author" class="mb-0 fw-bold text-main">Mohammad Asif Zafar</h6>
+								<span class="small text-muted">Senior Android Engineer</span>
+							</div>
+						</div>
+
+						<!-- Social Share Buttons -->
+						<div class="d-flex gap-2">
+							<a href="#" id="share-linkedin" target="_blank" class="share-btn" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+							<a href="#" id="share-twitter" target="_blank" class="share-btn" title="Share on X / Twitter"><i class="fab fa-x-twitter"></i></a>
+							<button id="share-copy" class="share-btn" title="Copy Link"><i class="fas fa-link"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cover Image -->
+				<img id="post-cover" src="../images/blog/kotlin-coroutines.svg" class="article-cover" alt="Article Cover">
+
+				<!-- Markdown Body -->
+				<div id="post-body" class="article-body"></div>
+
+				<!-- Tags Footer -->
+				<div class="mt-5 pt-4 border-top border-secondary" style="border-color: var(--border-glass) !important;">
+					<h6 class="text-muted small mb-2"><i class="fas fa-tags me-1"></i> Tags:</h6>
+					<div id="post-tags"></div>
+				</div>
+
+				<!-- Article Navigation (Next / Previous) -->
+				<div class="row mt-5 pt-4 border-top border-secondary" id="post-navigation" style="border-color: var(--border-glass) !important;">
+					<div class="col-md-6 mb-3 mb-md-0" id="prev-article-container"></div>
+					<div class="col-md-6 text-md-right" id="next-article-container"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="py-4 border-top border-secondary mt-5" style="border-color: var(--border-glass) !important;">
+		<div class="container text-center text-muted small">
+			<p class="mb-0">&copy; <script>document.write(new Date().getFullYear());</script> Mohammad Asif Zafar. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Libraries: jQuery, Bootstrap, Marked.js, Highlight.js, Front-matter -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const slug = urlParams.get('slug');
+
+			if (!slug) {
+				window.location.href = 'index.html';
+				return;
+			}
+
+			loadArticle(slug);
+		});
+
+		function parseFrontMatter(text) {
+			const regex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
+			const match = regex.exec(text);
+			if (!match) return { meta: {}, content: text };
+
+			const yamlLines = match[1].split('\n');
+			const meta = {};
+			let currentKey = null;
+
+			yamlLines.forEach(line => {
+				const trimmed = line.trim();
+				if (!trimmed || trimmed.startsWith('#')) return;
+
+				if (trimmed.startsWith('- ') && currentKey) {
+					if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
+					meta[currentKey].push(trimmed.replace(/^- /, '').replace(/^["']|["']$/g, ''));
+					return;
+				}
+
+				const colonIdx = line.indexOf(':');
+				if (colonIdx > -1) {
+					const key = line.slice(0, colonIdx).trim();
+					let val = line.slice(colonIdx + 1).trim();
+					val = val.replace(/^["']|["']$/g, '');
+
+					if (val === 'true') val = true;
+					else if (val === 'false') val = false;
+
+					meta[key] = val;
+					currentKey = key;
+				}
+			});
+
+			return { meta, content: match[2] };
+		}
+
+		function loadArticle(slug) {
+			// Fetch raw markdown file
+			$.ajax({
+				url: `../content/blog/${slug}.md`,
+				type: 'GET',
+				dataType: 'text',
+				success: function(markdownText) {
+					const { meta, content } = parseFrontMatter(markdownText);
+
+					// Configure Marked with Highlight.js
+					marked.setOptions({
+						highlight: function(code, lang) {
+							if (lang && hljs.getLanguage(lang)) {
+								return hljs.highlight(code, { language: lang }).value;
+							}
+							return hljs.highlightAuto(code).value;
+						},
+						breaks: true
+					});
+
+					// Render Article Metadata
+					document.title = `${meta.title || slug} | Mohammad Asif Zafar`;
+					$('#meta-title').text(`${meta.title || slug} | Mohammad Asif Zafar`);
+					$('#meta-desc').attr('content', meta.description || '');
+					$('#og-title').attr('content', meta.title || '');
+					$('#og-desc').attr('content', meta.description || '');
+
+					$('#post-title').text(meta.title || slug);
+					$('#post-description').text(meta.description || '');
+					$('#post-category').text(meta.category || 'Android');
+					$('#post-date').text(meta.date || '');
+					$('#post-author').text(meta.author || 'Mohammad Asif Zafar');
+
+					if (meta.coverImage) {
+						$('#post-cover').attr('src', `../${meta.coverImage}`).attr('alt', meta.title);
+					} else {
+						$('#post-cover').addClass('d-none');
+					}
+
+					// Calculate Reading Time
+					const wordCount = content.trim().split(/\s+/).length;
+					const readTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
+					$('#post-readtime').text(`${readTimeMinutes} min read`);
+
+					// Tags
+					if (meta.tags && Array.isArray(meta.tags)) {
+						const tagsHtml = meta.tags.map(t => `<span class="badge-tag">${t}</span>`).join(' ');
+						$('#post-tags').html(tagsHtml);
+					}
+
+					// Render Markdown Body
+					$('#post-body').html(marked.parse(content));
+
+					// Apply Syntax Highlighting to Code Blocks
+					document.querySelectorAll('pre code').forEach((el) => {
+						hljs.highlightElement(el);
+					});
+
+					// Setup Sharing Links
+					const articleUrl = encodeURIComponent(window.location.href);
+					const articleTitle = encodeURIComponent(meta.title || '');
+					$('#share-linkedin').attr('href', `https://www.linkedin.com/sharing/share-offsite/?url=${articleUrl}`);
+					$('#share-twitter').attr('href', `https://twitter.com/intent/tweet?url=${articleUrl}&text=${articleTitle}`);
+					$('#share-copy').on('click', function() {
+						navigator.clipboard.writeText(window.location.href);
+						alert('Article link copied to clipboard!');
+					});
+
+					// Load Next/Prev Navigation
+					loadNavigation(slug);
+
+					$('#article-loader').addClass('d-none');
+					$('#article-container').removeClass('d-none');
+				},
+				error: function() {
+					$('#article-loader').html(`
+						<div class="text-center py-5">
+							<i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+							<h4 class="text-main">Article Not Found</h4>
+							<p class="text-muted">The requested blog post could not be loaded.</p>
+							<a href="index.html" class="btn btn-primary rounded-pill mt-2">Return to Blog</a>
+						</div>
+					`);
+				}
+			});
+		}
+
+		function loadNavigation(currentSlug) {
+			$.getJSON('../content/posts.json', function(data) {
+				const posts = (data.posts || []).filter(p => p.published);
+				const currentIndex = posts.findIndex(p => p.slug === currentSlug);
+
+				if (currentIndex > 0) {
+					const prev = posts[currentIndex - 1];
+					$('#prev-article-container').html(`
+						<a href="post.html?slug=${prev.slug}" class="nav-article-card">
+							<span class="small text-muted d-block"><i class="fas fa-arrow-left me-1"></i> Previous Article</span>
+							<strong class="text-main small">${prev.title}</strong>
+						</a>
+					`);
+				}
+
+				if (currentIndex < posts.length - 1 && currentIndex !== -1) {
+					const next = posts[currentIndex + 1];
+					$('#next-article-container').html(`
+						<a href="post.html?slug=${next.slug}" class="nav-article-card">
+							<span class="small text-muted d-block">Next Article <i class="fas fa-arrow-right ms-1"></i></span>
+							<strong class="text-main small">${next.title}</strong>
+						</a>
+					`);
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

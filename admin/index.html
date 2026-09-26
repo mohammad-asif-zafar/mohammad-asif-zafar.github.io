@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Blog CMS Admin | Mohammad Asif Zafar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="robots" content="noindex, nofollow">
+
+	<!-- Fonts & Icons -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+	<link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+	<!-- Toast Alert Container -->
+	<div id="toast-container" class="position-fixed" style="top: 20px; right: 20px; z-index: 9999;"></div>
+
+	<!-- LOGIN VIEW -->
+	<div id="view-login" class="d-none min-vh-100 d-flex align-items-center justify-content-center p-3">
+		<div class="glass-card p-4 p-md-5 text-center" style="max-width: 480px; width: 100%;">
+			<div class="mb-4">
+				<div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 70px; height: 70px; background: rgba(99, 102, 241, 0.15); border: 2px solid var(--primary-color);">
+					<i class="fab fa-github fa-2x" style="color: var(--primary-color);"></i>
+				</div>
+				<h3 class="fw-bold mb-1">Blog CMS Admin</h3>
+				<p class="text-muted small">Sign in with your GitHub Personal Access Token</p>
+			</div>
+
+			<form id="form-login">
+				<div class="form-group text-left mb-3">
+					<label for="input-owner" class="small text-muted mb-1">GitHub Owner / Username</label>
+					<input type="text" id="input-owner" class="form-control form-control-custom" value="mohammad-asif-zafar" required>
+				</div>
+				<div class="form-group text-left mb-3">
+					<label for="input-repo" class="small text-muted mb-1">GitHub Repository</label>
+					<input type="text" id="input-repo" class="form-control form-control-custom" value="mohammad-asif-zafar.github.io" required>
+				</div>
+				<div class="form-group text-left mb-4">
+					<label for="input-token" class="small text-muted mb-1">GitHub Personal Access Token (PAT)</label>
+					<input type="password" id="input-token" class="form-control form-control-custom" placeholder="ghp_xxxxxxxxxxxx" required>
+					<small class="form-text text-muted">
+						Token needs <code class="text-info">repo</code> or <code class="text-info">contents:read/write</code> scope. Stored securely in browser session only.
+					</small>
+				</div>
+				<button type="submit" id="btn-login-submit" class="btn btn-gradient btn-block py-2">
+					<i class="fas fa-key me-2"></i> Authenticate & Login
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- MAIN APP VIEW (DASHBOARD, POSTS, EDITOR, SETTINGS) -->
+	<div id="view-app" class="d-none">
+		<!-- Top Header Navbar -->
+		<nav class="navbar navbar-dark bg-transparent border-bottom px-4" style="border-color: var(--border-glass) !important; background: rgba(15, 23, 42, 0.8) !important; backdrop-filter: blur(10px);">
+			<a class="navbar-brand font-weight-bold text-gradient" href="#dashboard">
+				<i class="fas fa-edit me-2"></i> Portfolio CMS
+			</a>
+			<div class="d-flex align-items-center gap-3">
+				<a href="../blog/index.html" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3 me-2">
+					<i class="fas fa-external-link-alt me-1"></i> View Live Blog
+				</a>
+				<button id="btn-logout" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+					<i class="fas fa-sign-out-alt me-1"></i> Logout
+				</button>
+			</div>
+		</nav>
+
+		<div class="container-fluid py-4 px-4">
+			<div class="row">
+				<!-- Sidebar Navigation -->
+				<div class="col-lg-2 col-md-3 mb-4">
+					<div class="glass-card p-3">
+						<nav class="nav flex-column">
+							<a class="sidebar-nav-link" href="#dashboard" id="nav-dashboard">
+								<i class="fas fa-chart-line"></i> Dashboard
+							</a>
+							<a class="sidebar-nav-link" href="#posts" id="nav-posts">
+								<i class="fas fa-newspaper"></i> Articles
+							</a>
+							<a class="sidebar-nav-link" href="#posts/new" id="nav-posts-new">
+								<i class="fas fa-plus-circle"></i> New Post
+							</a>
+							<a class="sidebar-nav-link" href="#settings" id="nav-settings">
+								<i class="fas fa-cog"></i> Settings
+							</a>
+						</nav>
+					</div>
+				</div>
+
+				<!-- Main Content View Area -->
+				<div class="col-lg-10 col-md-9">
+
+					<!-- SUB-VIEW: DASHBOARD -->
+					<div id="subview-dashboard" class="subview d-none">
+						<div class="d-flex justify-content-between align-items-center mb-4">
+							<h4 class="fw-bold mb-0">Dashboard Overview</h4>
+							<a href="#posts/new" class="btn btn-gradient">
+								<i class="fas fa-plus me-1"></i> Create Article
+							</a>
+						</div>
+
+						<!-- Metrics Cards -->
+						<div class="row mb-4">
+							<div class="col-md-3 col-sm-6 mb-3">
+								<div class="glass-card p-4 text-center">
+									<h6 class="text-muted small text-uppercase mb-2">Total Posts</h6>
+									<h2 id="metric-total-posts" class="fw-bold text-main mb-0">0</h2>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 mb-3">
+								<div class="glass-card p-4 text-center">
+									<h6 class="text-muted small text-uppercase mb-2">Published</h6>
+									<h2 id="metric-published-posts" class="fw-bold text-success mb-0">0</h2>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 mb-3">
+								<div class="glass-card p-4 text-center">
+									<h6 class="text-muted small text-uppercase mb-2">Drafts</h6>
+									<h2 id="metric-draft-posts" class="fw-bold text-warning mb-0">0</h2>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 mb-3">
+								<div class="glass-card p-4 text-center">
+									<h6 class="text-muted small text-uppercase mb-2">Categories</h6>
+									<h2 id="metric-categories" class="fw-bold text-info mb-0">0</h2>
+								</div>
+							</div>
+						</div>
+
+						<!-- Quick Recent Posts Table -->
+						<div class="glass-card p-4">
+							<h5 class="fw-bold mb-3">Recent Posts</h5>
+							<div class="table-responsive">
+								<table class="table table-dark table-hover bg-transparent mb-0">
+									<thead>
+										<tr class="text-muted small">
+											<th>TITLE</th>
+											<th>STATUS</th>
+											<th>CATEGORY</th>
+											<th>DATE</th>
+											<th class="text-right">ACTIONS</th>
+										</tr>
+									</thead>
+									<tbody id="table-dashboard-recent">
+										<!-- Injected dynamically -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<!-- SUB-VIEW: POSTS LIST -->
+					<div id="subview-posts" class="subview d-none">
+						<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+							<h4 class="fw-bold mb-0">Article Management</h4>
+							<a href="#posts/new" class="btn btn-gradient">
+								<i class="fas fa-plus me-1"></i> New Post
+							</a>
+						</div>
+
+						<!-- Filter Controls -->
+						<div class="glass-card p-3 mb-4">
+							<div class="row g-2">
+								<div class="col-md-8">
+									<input type="text" id="filter-posts-search" aria-label="Search posts" class="form-control form-control-custom" placeholder="Search posts by title, category, tag...">
+								</div>
+								<div class="col-md-4">
+									<select id="filter-posts-status" class="form-control form-control-custom">
+										<option value="ALL">All Statuses</option>
+										<option value="PUBLISHED">Published Only</option>
+										<option value="DRAFT">Drafts Only</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<!-- Full Table -->
+						<div class="glass-card p-4">
+							<div class="table-responsive">
+								<table class="table table-dark table-hover bg-transparent mb-0">
+									<thead>
+										<tr class="text-muted small">
+											<th>TITLE</th>
+											<th>STATUS</th>
+											<th>CATEGORY</th>
+											<th>DATE</th>
+											<th class="text-right">ACTIONS</th>
+										</tr>
+									</thead>
+									<tbody id="table-posts-list">
+										<!-- Injected dynamically -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<!-- SUB-VIEW: EDITOR / NEW / EDIT -->
+					<div id="subview-editor" class="subview d-none">
+						<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+							<div class="d-flex align-items-center gap-2">
+								<a href="#posts" class="btn btn-sm btn-outline-light rounded-circle me-2"><i class="fas fa-arrow-left"></i></a>
+								<h4 id="editor-heading" class="fw-bold mb-0">Create New Article</h4>
+							</div>
+							<div class="d-flex gap-2">
+								<button id="btn-save-draft" class="btn btn-outline-warning">
+									<i class="far fa-save me-1"></i> Save Draft
+								</button>
+								<button id="btn-publish-post" class="btn btn-gradient">
+									<i class="fas fa-paper-plane me-1"></i> Publish Post
+								</button>
+							</div>
+						</div>
+
+						<!-- Post Meta Fields -->
+						<div class="glass-card p-4 mb-4">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="form-group mb-3">
+										<label class="small text-muted mb-1">Article Title</label>
+										<input type="text" id="editor-title" class="form-control form-control-custom" placeholder="e.g. Understanding Kotlin Coroutines" required>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group mb-3">
+										<label class="small text-muted mb-1">Slug (URL identifier)</label>
+										<input type="text" id="editor-slug" class="form-control form-control-custom" placeholder="understanding-kotlin-coroutines" required>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group mb-3">
+								<label class="small text-muted mb-1">Short Description / Abstract</label>
+								<textarea id="editor-desc" class="form-control form-control-custom" rows="2" placeholder="Brief summary of the article for social preview and listing..."></textarea>
+							</div>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group mb-3">
+										<label class="small text-muted mb-1">Category</label>
+										<input type="text" id="editor-category" class="form-control form-control-custom" list="category-options" placeholder="e.g. Kotlin">
+										<datalist id="category-options">
+											<option value="Android">
+											<option value="Kotlin">
+											<option value="Jetpack Compose">
+											<option value="Kotlin Multiplatform">
+											<option value="Compose Multiplatform">
+											<option value="Architecture">
+											<option value="CI/CD">
+										</datalist>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group mb-3">
+										<label class="small text-muted mb-1">Tags (Comma-separated)</label>
+										<input type="text" id="editor-tags" class="form-control form-control-custom" placeholder="Kotlin, Coroutines, Android">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group mb-3">
+										<label class="small text-muted mb-1">Cover Image URL</label>
+										<div class="input-group">
+											<input type="text" id="editor-cover" class="form-control form-control-custom" placeholder="images/blog/cover.svg">
+											<div class="input-group-append">
+												<button type="button" id="btn-upload-cover" class="btn btn-outline-light">
+													<i class="fas fa-upload"></i>
+												</button>
+												<input type="file" id="file-cover-input" class="d-none" accept="image/*">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Split Editor & Live Preview Pane -->
+						<div class="editor-container">
+							<!-- Markdown Editor Pane -->
+							<div class="editor-pane">
+								<div class="editor-toolbar">
+									<button class="toolbar-btn" data-action="h1" title="Heading 1"><i class="fas fa-heading"></i>1</button>
+									<button class="toolbar-btn" data-action="h2" title="Heading 2"><i class="fas fa-heading"></i>2</button>
+									<button class="toolbar-btn" data-action="bold" title="Bold"><i class="fas fa-bold"></i></button>
+									<button class="toolbar-btn" data-action="italic" title="Italic"><i class="fas fa-italic"></i></button>
+									<button class="toolbar-btn" data-action="link" title="Link"><i class="fas fa-link"></i></button>
+									<button class="toolbar-btn" data-action="code" title="Code Block"><i class="fas fa-code"></i></button>
+									<button class="toolbar-btn" data-action="quote" title="Blockquote"><i class="fas fa-quote-right"></i></button>
+									<button class="toolbar-btn" data-action="ul" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+									<button class="toolbar-btn" data-action="ol" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+									<button class="toolbar-btn" data-action="hr" title="Horizontal Rule"><i class="fas fa-minus"></i></button>
+								</div>
+								<textarea id="editor-markdown" class="editor-textarea" placeholder="Write your blog article in Markdown..."></textarea>
+							</div>
+
+							<!-- Live Preview Pane -->
+							<div class="preview-pane">
+								<div class="editor-toolbar justify-content-between">
+									<span class="small text-muted font-weight-bold"><i class="far fa-eye me-1"></i> Live Preview</span>
+									<span id="editor-stats" class="small text-muted">0 words &bull; 0 min read</span>
+								</div>
+								<div id="preview-render" class="preview-body article-body">
+									<em class="text-muted">Live preview rendered here...</em>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- SUB-VIEW: SETTINGS -->
+					<div id="subview-settings" class="subview d-none">
+						<h4 class="fw-bold mb-4">CMS Settings</h4>
+						<div class="glass-card p-4" style="max-width: 600px;">
+							<form id="form-settings">
+								<div class="form-group mb-3">
+									<label class="small text-muted mb-1">GitHub Owner</label>
+									<input type="text" id="settings-owner" class="form-control form-control-custom" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="small text-muted mb-1">GitHub Repository</label>
+									<input type="text" id="settings-repo" class="form-control form-control-custom" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="small text-muted mb-1">Default Author Name</label>
+									<input type="text" id="settings-author" class="form-control form-control-custom" value="Mohammad Asif Zafar" required>
+								</div>
+								<button type="submit" class="btn btn-gradient mt-2">
+									<i class="fas fa-save me-1"></i> Save Settings
+								</button>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JS Libraries -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+	<!-- CMS Controller Engine -->
+	<script src="js/cms.js"></script>
+</body>
+
+</html>

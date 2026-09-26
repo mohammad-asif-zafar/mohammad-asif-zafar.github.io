@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "title": "Understanding Kotlin Coroutines and Structured Concurrency",
+      "slug": "understanding-kotlin-coroutines",
+      "description": "A comprehensive guide to Kotlin Coroutines, dispatchers, CoroutineScope, and structured concurrency patterns for scalable Android applications.",
+      "date": "2026-03-01",
+      "updatedAt": "2026-03-01",
+      "author": "Mohammad Asif Zafar",
+      "category": "Kotlin",
+      "tags": ["Kotlin", "Coroutines", "Android", "Asynchronous"],
+      "coverImage": "images/blog/kotlin-coroutines.svg",
+      "published": true,
+      "readingTime": "4 min read"
+    },
+    {
+      "title": "Getting Started with Compose Multiplatform for Android & Desktop",
+      "slug": "compose-multiplatform-guide",
+      "description": "Learn how to share UI logic across Android, iOS, and Desktop platforms using Jetpack Compose and Kotlin Multiplatform.",
+      "date": "2026-03-05",
+      "updatedAt": "2026-03-05",
+      "author": "Mohammad Asif Zafar",
+      "category": "Compose Multiplatform",
+      "tags": ["Compose", "KMP", "Multiplatform", "UI"],
+      "coverImage": "images/blog/compose-multiplatform.svg",
+      "published": true,
+      "readingTime": "3 min read"
+    },
+    {
+      "title": "Modern Android Clean Architecture with Jetpack Compose & MVI",
+      "slug": "android-clean-architecture",
+      "description": "A deep dive into structuring production-ready Android apps with Clean Architecture, MVI state management, and Unidirectional Data Flow.",
+      "date": "2026-03-10",
+      "updatedAt": "2026-03-10",
+      "author": "Mohammad Asif Zafar",
+      "category": "Architecture",
+      "tags": ["Architecture", "Android", "Jetpack Compose", "Clean Code"],
+      "coverImage": "images/blog/clean-architecture.jpg",
+      "published": false,
+      "readingTime": "2 min read"
+    }
+  ],
+  "categories": [
+    "Android",
+    "Kotlin",
+    "Jetpack Compose",
+    "Kotlin Multiplatform",
+    "Compose Multiplatform",
+    "Architecture",
+    "CI/CD",
+    "Career",
+    "Tutorials"
+  ]
+}

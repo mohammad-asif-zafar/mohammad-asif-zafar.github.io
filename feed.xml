@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Mohammad Asif Zafar - Engineering Blog</title>
+  <link>https://mohammad-asif-zafar.github.io/blog/</link>
+  <description>Technical articles on Android, Kotlin, Jetpack Compose, and Kotlin Multiplatform</description>
+  <language>en-us</language>
+  <lastBuildDate>Thu, 05 Mar 2026 00:00:00 GMT</lastBuildDate>
+  <item>
+    <title><![CDATA[Understanding Kotlin Coroutines and Structured Concurrency]]></title>
+    <link>https://mohammad-asif-zafar.github.io/blog/post.html?slug=understanding-kotlin-coroutines</link>
+    <guid>https://mohammad-asif-zafar.github.io/blog/post.html?slug=understanding-kotlin-coroutines</guid>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A comprehensive guide to Kotlin Coroutines, dispatchers, CoroutineScope, and structured concurrency patterns for scalable Android applications.]]></description>
+    <author>Mohammad Asif Zafar</author>
+    <category>Kotlin</category>
+  </item>
+  <item>
+    <title><![CDATA[Getting Started with Compose Multiplatform for Android & Desktop]]></title>
+    <link>https://mohammad-asif-zafar.github.io/blog/post.html?slug=compose-multiplatform-guide</link>
+    <guid>https://mohammad-asif-zafar.github.io/blog/post.html?slug=compose-multiplatform-guide</guid>
+    <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Learn how to share UI logic across Android, iOS, and Desktop platforms using Jetpack Compose and Kotlin Multiplatform.]]></description>
+    <author>Mohammad Asif Zafar</author>
+    <category>Compose Multiplatform</category>
+  </item>
+</channel>
+</rss>
