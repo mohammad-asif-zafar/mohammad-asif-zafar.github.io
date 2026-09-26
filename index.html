@@ -124,19 +124,43 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        /* Typography */
-        h1.big, h1.big-2, h1.big-4 {
-            font-size: 4.5rem;
-            font-weight: 900;
+        /* Typography & Headings */
+        h1.big, h1.big-2 {
+            display: none !important; /* Hide legacy overlapping watermark text */
+        }
+
+        .big-4 {
+            font-size: 2.2rem !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.5rem !important;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
-            margin-bottom: 2rem;
+            transform: none !important;
+            text-align: center;
+            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6, p, span, li, a {
             color: var(--text-main) !important;
+        }
+
+        .heading-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .heading-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .contact-info .glass-card p,
+        .contact-info .glass-card a {
+            word-break: normal !important;
+            overflow-wrap: anywhere !important;
+            font-size: 0.95rem;
         }
 
         .text-primary, .text-primary * {
@@ -628,21 +652,19 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-10 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Resume</h1>
+					<span class="text-primary mb-2 d-block fw-bold">EXPERIENCE &amp; QUALIFICATIONS</span>
+					<h2 class="mb-3 text-main">Resume &amp; Experience</h2>
+					<p class="lead text-muted mx-auto mb-4" style="max-width: 650px;">Over 9.5 years of experience building scalable Android, FinTech, and Kotlin Multiplatform applications.</p>
+					<a href="MOHAMMAD ASIF ZAFAR-july31.pdf" class="btn btn-primary py-3 px-5" target="_blank" rel="noopener">
+						<i class="fas fa-file-download me-2"></i> Download CV / Resume
+					</a>
 				</div>
 			</div>
-			<div class="row justify-content-center mt-5">
-				<div class="col-md-6 text-center ftco-animate">
-					<p><a href="MOHAMMAD ASIF ZAFAR-july31.pdf" class="btn btn-primary py-4 px-5" target="_blank" rel="noopener">Download CV</a></p>
-				</div>
-			</div>
-			<br>
-			<br>
 
 			<!-- Skills Section -->
-			<div class="row">
-				<h1 class="big-4">Core Skills</h1>
-				<div class="underline"></div>
+			<div class="text-center my-5">
+				<h3 class="display-6 fw-bold text-main mb-2">Core Skills &amp; Tech Stack</h3>
+				<div class="title-border mx-auto" style="width: 60px; height: 3px; background: var(--primary-gradient);"></div>
 			</div>
 			<br>
 
@@ -785,9 +807,9 @@
 			<br>
 			<br>
 
-			<div class="row">
-				<h1 class="big-4">Education</h1>
-				<div class="underline"></div>
+			<div class="text-center my-5">
+				<h3 class="display-6 fw-bold text-main mb-2">Education &amp; Qualifications</h3>
+				<div class="title-border mx-auto" style="width: 60px; height: 3px; background: var(--primary-gradient);"></div>
 			</div>
 			<br>
 
@@ -881,7 +903,7 @@
                     </div>
                 </div>
 
-				<!-- Ramadan Kareem 2026 -->
+				<!-- Noor Muslim Companion -->
 				<div class="col-md-4 d-flex ftco-animate mb-4">
                     <div class="blog-entry h-100 w-100 glass-card">
                         <div class="block-20" style="background-image: url('images/ramadan -app_overview.png.png');">
@@ -890,15 +912,15 @@
                             </div>
                         </div>
                         <div class="text">
-                            <h3 class="text-main">Ramadan Kareem 2026</h3>
-                            <p class="text-muted">A comprehensive spiritual companion featuring location-based prayer times, complete Quran with audio, Zakat calculator, and Qibla compass. Engineered with Jetpack Compose and MVVM.</p>
+                            <h3 class="text-main">Noor Muslim Companion</h3>
+                            <p class="text-muted">Elegant spiritual companion app featuring complete Holy Quran recitations & translations, accurate location-based prayer times with Azan, Qibla compass, 99 Names of Allah, Duas, and Ramadan calendar.</p>
                             <div class="tech-tags mb-3">
                                 <span class="badge badge-tech">Kotlin</span>
                                 <span class="badge badge-tech">Compose</span>
                                 <span class="badge badge-tech">Hilt</span>
                             </div>
-                            <a href="https://github.com/mohammad-asif-zafar/Ramadan-Kareem-2026/tree/release/2.0" class="btn btn-primary btn-sm" target="_blank">
-                                View GitHub <i class="icon-github ml-1"></i>
+                            <a href="https://mohammad-asif-zafar.github.io/Ramadan-Kareem-2026/" class="btn btn-primary btn-sm" target="_blank">
+                                View Project <i class="fas fa-external-link-alt ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -1083,11 +1105,12 @@
 
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Contact</h1>
-					<h2 class="mb-4 text-main">Get In Touch</h2>
-					<p class="text-muted">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-8 heading-section text-center ftco-animate">
+					<span class="text-primary mb-2 d-block fw-bold">CONTACT</span>
+					<h2 class="mb-3 text-main">Get In Touch</h2>
+					<p class="text-muted mx-auto" style="max-width: 600px;">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+					<div class="title-border mx-auto mt-3" style="width: 60px; height: 3px; background: var(--primary-gradient);"></div>
 				</div>
 			</div>
 
