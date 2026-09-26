@@ -8,7 +8,12 @@
       "updatedAt": "2026-03-01",
       "author": "Mohammad Asif Zafar",
       "category": "Kotlin",
-      "tags": ["Kotlin", "Coroutines", "Android", "Asynchronous"],
+      "tags": [
+        "Kotlin",
+        "Coroutines",
+        "Android",
+        "Asynchronous"
+      ],
       "coverImage": "images/blog/kotlin-coroutines.svg",
       "published": true,
       "readingTime": "4 min read"
@@ -21,7 +26,12 @@
       "updatedAt": "2026-03-05",
       "author": "Mohammad Asif Zafar",
       "category": "Compose Multiplatform",
-      "tags": ["Compose", "KMP", "Multiplatform", "UI"],
+      "tags": [
+        "Compose",
+        "KMP",
+        "Multiplatform",
+        "UI"
+      ],
       "coverImage": "images/blog/compose-multiplatform.svg",
       "published": true,
       "readingTime": "3 min read"
@@ -30,14 +40,19 @@
       "title": "Modern Android Clean Architecture with Jetpack Compose & MVI",
       "slug": "android-clean-architecture",
       "description": "A deep dive into structuring production-ready Android apps with Clean Architecture, MVI state management, and Unidirectional Data Flow.",
-      "date": "2026-03-10",
-      "updatedAt": "2026-03-10",
+      "date": "2026-09-26",
+      "updatedAt": "2026-09-26",
       "author": "Mohammad Asif Zafar",
       "category": "Architecture",
-      "tags": ["Architecture", "Android", "Jetpack Compose", "Clean Code"],
-      "coverImage": "images/blog/clean-architecture.jpg",
-      "published": false,
-      "readingTime": "2 min read"
+      "tags": [
+        "Architecture",
+        "Android",
+        "Jetpack Compose",
+        "Clean Code"
+      ],
+      "coverImage": "images/blog/clean-architecture.svg",
+      "published": true,
+      "readingTime": "1 min read"
     }
   ],
   "categories": [
