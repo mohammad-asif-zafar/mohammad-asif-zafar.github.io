@@ -26,6 +26,13 @@
 
 
 
+	<script>
+		(function() {
+			var savedTheme = localStorage.getItem('theme') || 'dark';
+			document.documentElement.setAttribute('data-theme', savedTheme);
+		})();
+	</script>
+
 	<style>
         /* Advanced Modern Design Theme */
         :root {
@@ -42,6 +49,15 @@
             --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.92);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-glass: rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+
         body {
             background-color: var(--bg-dark) !important;
             background-image:
@@ -51,6 +67,29 @@
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             line-height: 1.7;
+        }
+
+        [data-theme="light"] body {
+            background-color: var(--bg-dark) !important;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
+            color: var(--text-main) !important;
+        }
+
+        [data-theme="light"] .ftco_navbar {
+            background: rgba(255, 255, 255, 0.85) !important;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        [data-theme="light"] .glass-card,
+        [data-theme="light"] .resume-wrap,
+        [data-theme="light"] .audio-player,
+        [data-theme="light"] .bento-item,
+        [data-theme="light"] .blog-entry {
+            background: var(--bg-card) !important;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.06);
         }
 
         /* Force dark theme visibility */
@@ -348,12 +387,17 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
+				<ul class="navbar-nav nav ml-auto align-items-center">
 					<li class="nav-item"><a href="#about-section" class="nav-link active"><span>Home</span></a></li>
 					<li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
 					<li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
 					<li class="nav-item"><a href="blog/" class="nav-link"><span>Blog</span></a></li>
 					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+					<li class="nav-item ml-lg-3 mt-2 mt-lg-0">
+						<button id="theme-toggle" class="btn btn-sm btn-outline-secondary rounded-circle" aria-label="Toggle Theme" style="width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border-color: var(--border-glass); color: var(--text-main);">
+							<i id="theme-toggle-icon" class="fas fa-moon"></i>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -1136,6 +1180,34 @@
             progressBar.style.width = '0%';
             currentTimeEl.textContent = '0:00';
         });
+
+        // Theme Toggle Controller
+        function updateThemeUI(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            const icon = document.getElementById('theme-toggle-icon');
+            if (icon) {
+                if (theme === 'light') {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        }
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        updateThemeUI(currentTheme);
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function() {
+                const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+                updateThemeUI(nextTheme);
+            });
+        }
     });
 </script>
 

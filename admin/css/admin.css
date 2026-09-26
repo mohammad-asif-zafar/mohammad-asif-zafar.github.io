@@ -12,6 +12,16 @@
 	--transition: all 0.3s ease;
 }
 
+[data-theme="light"] {
+	--bg-dark: #f8fafc;
+	--bg-card: rgba(255, 255, 255, 0.95);
+	--bg-input: rgba(241, 245, 249, 0.9);
+	--text-main: #0f172a;
+	--text-muted: #64748b;
+	--border-glass: rgba(0, 0, 0, 0.1);
+	--shadow-glow: 0 10px 30px rgba(99, 102, 241, 0.15);
+}
+
 body {
 	background-color: var(--bg-dark) !important;
 	background-image:
@@ -20,6 +30,53 @@ body {
 	color: var(--text-main) !important;
 	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 	min-height: 100vh;
+}
+
+[data-theme="light"] body {
+	background-color: var(--bg-dark) !important;
+	background-image:
+		radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+		radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
+	color: var(--text-main) !important;
+}
+
+[data-theme="light"] .glass-card {
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .editor-pane,
+[data-theme="light"] .preview-pane {
+	background: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"] .editor-toolbar {
+	background: rgba(241, 245, 249, 0.95);
+}
+
+[data-theme="light"] .editor-textarea {
+	background: #ffffff !important;
+	color: #0f172a !important;
+}
+
+[data-theme="light"] .preview-body {
+	background: #ffffff;
+}
+
+[data-theme="light"] .preview-body p,
+[data-theme="light"] .preview-body ul,
+[data-theme="light"] .preview-body ol {
+	color: #334155;
+}
+
+[data-theme="light"] .table-dark {
+	background: transparent !important;
+	color: var(--text-main) !important;
+}
+
+[data-theme="light"] .table-dark td,
+[data-theme="light"] .table-dark th {
+	border-color: rgba(0, 0, 0, 0.08);
+	color: var(--text-main);
 }
 
 .glass-card {

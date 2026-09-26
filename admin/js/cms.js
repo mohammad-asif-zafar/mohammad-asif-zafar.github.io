@@ -18,6 +18,7 @@ let currentEditingSlug = null;
 let currentPostSha = null;
 
 $(document).ready(function() {
+	initTheme();
 	initAuth();
 	setupEventHandlers();
 	handleRouting();
@@ -26,6 +27,28 @@ $(document).ready(function() {
 		handleRouting();
 	});
 });
+
+function initTheme() {
+	function updateThemeUI(theme) {
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+		const icon = $('#theme-toggle-icon');
+		if (theme === 'light') {
+			icon.removeClass('fa-moon').addClass('fa-sun');
+		} else {
+			icon.removeClass('fa-sun').addClass('fa-moon');
+		}
+	}
+
+	const currentTheme = localStorage.getItem('theme') || 'dark';
+	updateThemeUI(currentTheme);
+
+	$(document).on('click', '#theme-toggle', function() {
+		const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+		const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+		updateThemeUI(nextTheme);
+	});
+}
 
 /* ==========================================================================
    AUTHENTICATION & SESSION MANAGEMENT

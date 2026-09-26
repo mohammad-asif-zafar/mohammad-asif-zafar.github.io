@@ -23,6 +23,13 @@
 	<!-- Highlight.js Syntax Highlighting Theme (Atom One Dark) -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
+	<script>
+		(function() {
+			var savedTheme = localStorage.getItem('theme') || 'dark';
+			document.documentElement.setAttribute('data-theme', savedTheme);
+		})();
+	</script>
+
 	<style>
 		:root {
 			--primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
@@ -37,6 +44,15 @@
 			--transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 		}
 
+		[data-theme="light"] {
+			--bg-dark: #f8fafc;
+			--bg-card: rgba(255, 255, 255, 0.92);
+			--text-main: #0f172a;
+			--text-muted: #64748b;
+			--border-glass: rgba(0, 0, 0, 0.1);
+			--shadow-glow: 0 10px 30px rgba(99, 102, 241, 0.15);
+		}
+
 		body {
 			background-color: var(--bg-dark) !important;
 			background-image:
@@ -46,6 +62,35 @@
 			font-family: 'Poppins', sans-serif;
 			overflow-x: hidden;
 			line-height: 1.8;
+		}
+
+		[data-theme="light"] body {
+			background-color: var(--bg-dark) !important;
+			background-image:
+				radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
+			color: var(--text-main) !important;
+		}
+
+		[data-theme="light"] .ftco_navbar {
+			background: rgba(255, 255, 255, 0.85) !important;
+			border-bottom: 1px solid var(--border-glass);
+		}
+
+		[data-theme="light"] .glass-card {
+			background: var(--bg-card) !important;
+			border: 1px solid var(--border-glass);
+			box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.06);
+		}
+
+		[data-theme="light"] .article-body p,
+		[data-theme="light"] .article-body ul,
+		[data-theme="light"] .article-body ol {
+			color: #334155;
+		}
+
+		[data-theme="light"] .article-body h2 {
+			color: #7c3aed;
 		}
 
 		.ftco_navbar {
@@ -243,12 +288,17 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
+				<ul class="navbar-nav nav ml-auto align-items-center">
 					<li class="nav-item"><a href="../index.html#about-section" class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="../index.html#resume-section" class="nav-link"><span>Resume</span></a></li>
 					<li class="nav-item"><a href="../index.html#project-section" class="nav-link"><span>Projects</span></a></li>
 					<li class="nav-item"><a href="index.html" class="nav-link active"><span>Blog</span></a></li>
 					<li class="nav-item"><a href="../index.html#contact-section" class="nav-link"><span>Contact</span></a></li>
+					<li class="nav-item ml-lg-3 mt-2 mt-lg-0">
+						<button id="theme-toggle" class="btn btn-sm btn-outline-secondary rounded-circle" aria-label="Toggle Theme" style="width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border-color: var(--border-glass); color: var(--text-main);">
+							<i id="theme-toggle-icon" class="fas fa-moon"></i>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -339,6 +389,26 @@
 
 	<script>
 		$(document).ready(function() {
+			function updateThemeUI(theme) {
+				document.documentElement.setAttribute('data-theme', theme);
+				localStorage.setItem('theme', theme);
+				const icon = $('#theme-toggle-icon');
+				if (theme === 'light') {
+					icon.removeClass('fa-moon').addClass('fa-sun');
+				} else {
+					icon.removeClass('fa-sun').addClass('fa-moon');
+				}
+			}
+
+			const currentTheme = localStorage.getItem('theme') || 'dark';
+			updateThemeUI(currentTheme);
+
+			$('#theme-toggle').on('click', function() {
+				const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+				const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+				updateThemeUI(nextTheme);
+			});
+
 			const urlParams = new URLSearchParams(window.location.search);
 			const slug = urlParams.get('slug');
 
