@@ -69,12 +69,14 @@ function initAuth() {
 	currentAuth = {
 		owner: owner || fallback.owner || 'mohammad-asif-zafar',
 		repo: repo || fallback.repo || 'mohammad-asif-zafar.github.io',
-		token: token || fallback.token || ''
+		token: token || fallback.token || '',
+		authenticated: isAuth || (fallback.authenticated === true)
 	};
 
 	console.log("initAuth initialized.");
 	console.log("Auth state:", isAuthenticated());
 	console.log("Current hash:", window.location.hash);
+	console.log("SessionStorage:", sessionStorage);
 
 	if ($('#input-owner').length) $('#input-owner').val(currentAuth.owner);
 	if ($('#input-repo').length) $('#input-repo').val(currentAuth.repo);
@@ -82,12 +84,13 @@ function initAuth() {
 }
 
 function isAuthenticated() {
-	const authenticatedFlag = sessionStorage.getItem("github_authenticated") === "true";
-	return authenticatedFlag && !!currentAuth.token && !!currentAuth.owner && !!currentAuth.repo;
+	const authenticatedFlag = sessionStorage.getItem("github_authenticated") === "true" || currentAuth.authenticated === true;
+	const hasAuthDetails = !!currentAuth.token && !!currentAuth.owner && !!currentAuth.repo;
+	return authenticatedFlag && hasAuthDetails;
 }
 
 function login(owner, repo, token) {
-	currentAuth = { owner, repo, token };
+	currentAuth = { owner, repo, token, authenticated: false };
 
 	showToast('Validating GitHub credentials...', 'info');
 
@@ -98,7 +101,8 @@ function login(owner, repo, token) {
 				showToast('Token validated, but lacks write permission to repository.', 'warning');
 			}
 
-			// Store session state securely in sessionStorage
+			// Store in memory & sessionStorage
+			currentAuth.authenticated = true;
 			sessionStorage.setItem("github_authenticated", "true");
 			sessionStorage.setItem("github_owner", owner);
 			sessionStorage.setItem("github_repo", repo);
@@ -112,11 +116,14 @@ function login(owner, repo, token) {
 
 			showToast(`Authenticated successfully for ${repoData.full_name}!`, 'success');
 
-			// Explicitly navigate to dashboard and trigger route rendering
-			window.location.hash = '#/dashboard';
+			// Update hash and trigger view transition
+			if (window.location.hash !== '#/dashboard' && window.location.hash !== '#dashboard') {
+				window.location.hash = '#/dashboard';
+			}
 			handleRouting();
 		})
 		.catch(err => {
+			currentAuth.authenticated = false;
 			sessionStorage.removeItem("github_authenticated");
 			sessionStorage.removeItem("github_token");
 
@@ -134,13 +141,13 @@ Please verify:
 }
 
 function logout() {
+	currentAuth = { owner: 'mohammad-asif-zafar', repo: 'mohammad-asif-zafar.github.io', token: '', authenticated: false };
+
 	sessionStorage.removeItem("github_authenticated");
 	sessionStorage.removeItem("github_owner");
 	sessionStorage.removeItem("github_repo");
 	sessionStorage.removeItem("github_token");
 	sessionStorage.removeItem(CMS_STORAGE_KEY);
-
-	currentAuth = { owner: 'mohammad-asif-zafar', repo: 'mohammad-asif-zafar.github.io', token: '' };
 
 	showToast('Logged out successfully.', 'info');
 	window.location.hash = '#/login';
@@ -226,11 +233,11 @@ function handleRouting() {
 function showView(view) {
 	console.log("showView executing for view:", view);
 	if (view === 'login') {
-		$('#view-login').css('display', 'flex').removeClass('d-none');
-		$('#view-app').css('display', 'none').addClass('d-none');
+		$('#view-login').removeClass('d-none').show();
+		$('#view-app').addClass('d-none').hide();
 	} else {
-		$('#view-login').css('display', 'none').addClass('d-none');
-		$('#view-app').css('display', 'block').removeClass('d-none');
+		$('#view-login').addClass('d-none').hide();
+		$('#view-app').removeClass('d-none').show();
 	}
 }
 

@@ -12,6 +12,19 @@
 	--transition: all 0.3s ease;
 }
 
+/* Views visibility overrides */
+#view-login.d-none, #view-app.d-none {
+	display: none !important;
+}
+
+#view-login:not(.d-none) {
+	display: flex !important;
+}
+
+#view-app:not(.d-none) {
+	display: block !important;
+}
+
 [data-theme="light"] {
 	--bg-dark: #f8fafc;
 	--bg-card: rgba(255, 255, 255, 0.95);
