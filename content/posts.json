@@ -37,7 +37,7 @@
       "readingTime": "3 min read"
     },
     {
-      "title": "Modern Android Clean Architecture with Jetpack Compose & MVI",
+      "title": "1. Modern Android Clean Architecture with Jetpack Compose & MVI",
       "slug": "android-clean-architecture",
       "description": "A deep dive into structuring production-ready Android apps with Clean Architecture, MVI state management, and Unidirectional Data Flow.",
       "date": "2026-09-26",
@@ -51,7 +51,7 @@
         "Clean Code"
       ],
       "coverImage": "images/blog/clean-architecture.svg",
-      "published": true,
+      "published": false,
       "readingTime": "1 min read"
     }
   ],
